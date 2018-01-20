@@ -1,0 +1,213 @@
+\chapter{Supplement materials for Chapter 3}
+\section{Proof of Lemma 2.1.1}
+\begin{lemma}
+ Suppose the following conditions hold.
+	\begin{enumerate}
+		\item $\forall \bs{a} \in \mathbb{R}^p$,$\exists \delta > 0$ ,such that
+		\begin{enumerate}
+			\item $\mathbb{E}\lt|\bs{a}^\itl\pard[\bs{\theta}] \int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt|^{2+\delta} < \infty$
+			\item $ \lt\{\bs{\bs{a}^{\intercal}}V\lt[\pard[\bs{\theta}] \int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt]\bs{a} \rt\}^{1+\frac{\delta}{2}}< \infty$.
+		\end{enumerate}
+	\end{enumerate}
+	Then, we have, for any fixed $\bs{\theta}$,
+	\begin{gather}
+	\begin{flalign*}
+	\sqrt{n}\lt(\nabla \wh{V}_j(\bs{\theta})  -\mathbb{E}\lt(\nabla \wh{V}_j(\bs{\theta})\rt)\rt)\overset{d}{\to}\mathcal{N}\lt(0,AV\lt(\pard[\bs{\theta}] \int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt)\rt)
+	\end{flalign*}
+	\end{gather}
+\end{lemma}
+
+The proof of this is similar to the proof of Lemma 1.1.3 and is shown in APPENDIX.
+%\subsection{Limiting distribution of $\nabla_{\bs{\theta}}\wh{\mathbb{E}}\lt\{ \text{sgn}\lt(\bs{X}^{\intercal}\bs{\theta}\rt)\bs{X}_1^{\intercal}\bs{\beta}_{Y1}\rt\} $}
+
+%Comment: Goal is to prove the derivative above is asymptotically normal.
+%Considering that it includes sample size $n$ in $h$, and it is multivariate.
+%Try Lyapunov condition and cramer-wold theorem first.
+%
+%The sequences here are a triangular array, and are iid for each $n$.
+%
+%$k$ is the kernel of our choice, gaussian kernel.
+
+\begin{proof}
+	For any  $\bs{a} \in \mathbb{R}^p$, we let $W_{ni} = \bs{a}^\itl \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$. For each value of $n$, $w_{n1},w_{n2},\cdots,w_{nn}$ are i.i.d, and functions of the sample size $n$. This is because that $\bs{X}_{i}$ are assumed to be i.i.d., and $h$ is a function of sample
+	size $n$. Then, we have
+	\begin{gather*}
+	\mu_{n}:=\mathbb{E}W_{ni}=\mathbb{E}\lt(\bs{a}^\itl \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt),
+	\end{gather*}
+	and
+	\begin{gather*}
+	\sigma_{n}^{2}:=V(W_{ni})=\bs{a}^\itl V\lt(\pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt)\bs{a}
+	\end{gather*}
+	
+	%?????????????????????????????????????????????????????????? \\
+	%??? Delta method and Taylor expansion for approximation ??? \\
+	%?????????????????????????????????????????????????????????? \\
+	We let $G_{ni}=W_{ni}-\mu_{\ensuremath{n}}$, and $T_{n}=\sum_{i=1}^{n}G_{ni}$. Also, we let $s_{n}^{2}=V(T_{n})=\sum_{i=1}^{n}V(G_{ni})=\sum_{i=1}^{n}\sigma_{n}^{2}=n\sigma_{n}^{2}$, where the second equality is because of independence, and the last equality is due to identicalness. Therefore, $\sfrac{T_{n}}{s_{n}}$ has mean 0, and variance 1.  If we can show $G_{ni}$ satisfying the Lyapunov condition, then
+	we have
+	
+	$$\frac{T_{n}}{s_{n}}\overset{d}{\to}\mathcal{N}(0,1),\text{ as } n \to \infty$$,
+	
+	
+	
+	Now, we check the Lyapunov condition, that is, ~\cite{Lindsay1995,Hunter2014}
+	\begin{gather*}
+	\exists\delta>0, \text{ such that } \frac{1}{s_{n}^{2+\delta}}\sum_{i=1}^{n}\mathbb{E}\mid G_{n,i}\mid^{2+\delta}\to0, \text{ as } n\to0.
+	\end{gather*}
+	We define, for any $\bs{a}$,
+	\begin{gather*}
+	C_1 \triangleq \mathbb{E}\lt|G_{ni}\rt|^{2+\delta}=\mathbb{E}\lt|W_{ni}-\mu_{\ensuremath{n}}\rt|^{2+\delta}=\mathbb{E}\lt|\bs{a}^\itl \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})-\mu_{n}\rt|^{2+\delta},
+	\end{gather*}
+	and
+	\begin{gather*}
+	C_2 \triangleq s_{n}^{2+\delta}=n^{1+\frac{\delta}{2}}\sigma_{n}^{2+\delta}=n^{1+\frac{\delta}{2}}\lt\{ \bs{a}^\itl  V \lt[ \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt] \bs{a} \rt\} ^{1+\frac{\delta}{2}}.
+	\end{gather*}
+	Then, we have
+	\begin{flalign*}
+	&\frac{1}{s_{n}^{2+\delta}}\sum_{i=1}^{n}\mathbb{E}\mid G_{n,i}\mid^{2+\delta}\\
+	=&\frac{\mathbb{E}\lt|\bs{a}^\itl \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})-\mu_{n}\rt|^{2+\delta}}{n^{\frac{\delta}{2}}\lt\{ \bs{a}^{\intercal}V\lt[\pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}\lt(y | \bs{H}_{1,i} = \bs{h}_{1,i}\rt) \rt]\bs{a}\rt\} ^{1+\frac{\delta}{2}}} \\
+	=&\frac{C_{1}}{n^{\frac{\delta}{2}}C_{2}}.
+	\end{flalign*}
+	
+	As long as $\delta>0$, for finite $C_1$ and finite $C_2$, we have $\sfrac{C_{1}}{n^{\frac{\delta}{2}}C_{2}}\to0$,
+	as $n\to\infty$. This means that the Lyapunov condition is satisfied, if $\mathbb{E}\lt|G_{ni}\rt|^{2+\delta}$ and $s_{n}^{2+\delta}$ are finite. Then,  by Lyapunov Central Limit Theorem, we have
+	\begin{gather*}
+	\frac{T_{n}}{s_{n}}\overset{d}{\to}\mathcal{N}(0,1).
+	\end{gather*}
+	
+	As this hold for any arbitary non-random vector $\bs{a}\in \mathbb{R}^p$, we have, by Cramer-Wold Theorem, that
+	\begin{gather*}
+	\sqrt{n}\lt[\mean[n] \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) -\mathbb{E}\lt\{ \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt\}\rt]\overset{d}{\to}\mathcal{N}\lt(0,V\lt[\pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt]\rt),
+	\end{gather*}
+	as $n \to \infty$. We denote $\bs{L}_{ni}= \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$,
+	then this is written as
+	\begin{gather*}
+	\sqrt{n}\lt[\frac{1}{n}\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}\rt]\overset{d}{\to}\mathcal{N}\lt(0,V\lt[\bs{L}_{n1}\rt]\rt).
+	\end{gather*}
+	Then, we have
+	\begin{gather*}
+	\frac{1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}}{[V(\bs{L}_{n1})/n]^{1/2}}\frac{[V(\bs{L}_{n1})/n]^{1/2}}{\lt[AV(\bs{L}_{n1})/n\rt]^{1/2}}\overset{d}{\to}\mathcal{N}(0,1).
+	\end{gather*}
+	As  $n \to \infty$,
+	\begin{gather*}
+	\frac{V(\bs{L}_{n1})^{1/2}}{AV(\bs{L}_{n1})^{1/2}}\to1,
+	\end{gather*}
+	then we have
+	\begin{gather*}
+	\frac{1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}}{[AV(\bs{L}_{n1})/n]^{1/2}}\overset{d}{\to}\mathcal{N}(0,1),
+	\end{gather*}
+	i.e.,
+	\begin{gather*}
+	\sqrt{n}\lt[1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}\rt]\overset{d}{\to}N\lt(0,AV(\bs{L}_{n1})\rt).
+	\end{gather*}
+	As $\frac{1}{n}\sum_{i=1}^{n}\bs{L}_{ni} =\mean[n] \pard[\bs{\theta}]\int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) = \nabla \wh{V}_j(\bs{\theta})$, we have
+	\begin{gather}
+	\begin{flalign*}
+	\sqrt{n}\lt[\nabla \wh{V}_j(\bs{\theta})  -\mathbb{E}\lt\{\nabla \wh{V}_j(\bs{\theta})\rt\}\rt]\overset{d}{\to}\mathcal{N}\lt(0,AV\lt[\pard[\bs{\theta}] \int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]\rt)
+	\end{flalign*}
+	\end{gather}
+\end{proof}
+\section{Proof of Corollary 2.1.2}
+\begin{corollary}
+	Suppose all the assumptions in Lemma 3  hold, and $\wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$ is a consistent estimator of ${F}_{Y_j^*(\bs{\theta})}(y_j | \bs{H}_{1,i} = \bs{h}_{1,i})$. Then, we have
+	\begin{gather}
+	\begin{flalign*}
+	\sqrt{n}\lt(\nabla \wh{V}_j(\bs{\theta}^*_{\bs{\nu}}(\mu))  - \nabla V_j(\bs{\theta}^*_{\bs{\nu}}(\mu))\rt)\overset{d}{\to}\mathcal{N}\lt(0,AV\lt(\pard[\bs{\theta}] \int y_j \,d  F_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\bigg\rvert_{\bs{\theta} = \bs{\theta}^*_{\bs{\nu}}(\mu)} \rt)\rt)
+	\end{flalign*}
+	\end{gather}
+\end{corollary}
+\begin{proof}
+	We write
+	\begin{gather}
+	\begin{flalign*}
+	& \nabla \wh{V}_j(\bs{\theta})  - \nabla V_j^*(\bs{\theta}) \\
+	= & \nabla \wh{V}_j(\bs{\theta})  - \mb{E}\lt(\nabla \wh{V}_j(\bs{\theta}) \rt) + \mb{E}\lt(\nabla \wh{V}_j(\bs{\theta}) \rt)- \nabla V_j^*(\bs{\theta}) ,
+	\end{flalign*}
+	\end{gather}
+	where $ \mb{E}\lt(\nabla \wh{V}_j(\bs{\theta}) \rt)- \nabla V_j^*(\bs{\theta})=  \mb{E}\lt(\pard[\bs{\theta}]\int y_j \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt)  - $\\$\mb{E} \lt(\pard[\bs{\theta}]\int y_j \,d  F_{Y_j^*x(\bs{\theta})}(y_j| \bs{H}_{1,i} = \bs{h}_{1,i}\rt)$  $ = o_p(1)$, due to the consistency of $\wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$ and dominated convergence theorem.\\
+	
+	In lemma 2.1.1, let $\bs{\theta} = \bs{\theta}^*_{\bs{\nu}}(\mu)$ and then
+	\begin{gather}
+	\begin{flalign*}
+	\sqrt{n}\lt(\nabla \wh{V}_j(\bs{\theta}^*_{\bs{\nu}}(\mu))  - \nabla \mb{E}\lt( \wh{V}_j(\bs{\theta}^*_{\bs{\nu}}(\mu))\rt)\rt)\overset{d}{\to}\mathcal{N}\lt(0,AV\lt(\pard[\bs{\theta}] \int y_j \,d \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\bigg\rvert_{\bs{\theta} = \bs{\theta}^*_{\bs{\nu}}(\mu)} \rt)\rt).
+	\end{flalign*}
+	\end{gather}
+	As $\wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$ is consistent, we have
+	\begin{gather*}
+	\frac{AV\lt[\pard[\bs{\theta}] \int y \,d  \wh{F}_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]}{AV\lt[\pard[\bs{\theta}] \int y_j \,d  F_{Y^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]} \overset{p}{\to} 1.
+	\end{gather*}
+	Then, we have
+	\begin{gather}
+	\begin{flalign*}
+	\sqrt{n}\lt(\nabla \wh{V}_j(\bs{\theta}^*_{\bs{\nu}}(\mu))  - \nabla V_j\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt)\rt)\overset{d}{\to}\mathcal{N}\lt(0,AV\lt(\pard[\bs{\theta}] \int y_j \,d F_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\bigg\rvert_{\bs{\theta} = \bs{\theta}^*_{\bs{\nu}}(\mu)} \rt)\rt).
+	\end{flalign*}
+	\end{gather}
+\end{proof}
+
+\section{Proof of Theorem 2.1.3}
+\begin{theorem}
+	Suppose all the assumptions above hold. Then we have, as $n\to \infty$
+	\begin{flalign*}
+	\sqrt{n}\lt(\wh{\bs{\theta}}_{\bs{\nu}}(\mu) - \bs{\theta}_{\bs{\nu}}(\mu)^*\rt) \overset{d}{\to} \mathcal{N}\lt(\bs{0}, \bs{\Sigma}^* \rt),
+	\end{flalign*}
+	where $\bs{\Sigma}^* = \bs{D}^{*-1}\bs{C}^{*}\bs{D}^{*-1}$, 	\\$\bs{C}^* =\mathbb{E}\lt( \nabla v_1\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt)\nabla^{\itl} v_1\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt) \rt) - \mathbb{E}\lt(\nabla v_1\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt)\rt) \mathbb{E}\lt(\nabla^{\itl} v_1\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt)\rt)$,\\
+	and $\bs{D}^*  =  \nabla^2 \phi^{BP}_{\mu}(\bs{\theta}^*_{\bs{\nu}}(\mu))$.
+\end{theorem}
+\begin{proof} For notation simplicity in this proof, let $\phi\lt(\bs{\theta}\rt) = \phi^{PB}_{\mu}\lt(\bs{\theta}\rt)$ and $\wh{\phi}(\bs{\theta}) = \wh{\phi}^{PB}_{\mu}\lt(\bs{\theta}\rt)$ for this proof. Also, let $\bs{\theta}^* = \bs{\theta}^*_{\nu}(\mu)$ and $\wh{\bs{\theta}} = \wh{\bs{\theta}}_{\nu}(\mu)$ here.
+	Recall $ \wh{\phi}(\bs{\theta}) = \wh{v}_1(\bs{\theta}) - \mu \sum_{j=2}^J \ln \wh{v}_j(\bs{\theta}) + \frac{1}{2\mu}\sum_{t=1}^{T}(\bs{\theta}^{\itl}_t\bs{\theta}_t - 1)^2$.  As  $\bs{\theta}_t^{\itl}\bs{\theta}_t-1=0$ is always satisfied as a constraint, the gradient is $\nabla\wh{\phi}\lt(\bs{\theta}\rt) = \,\,\nabla\wh{v}_1(\bs{\theta}) - \mu \sum_{j=2}^J \sfrac{\nabla\wh{v}_j\lt( \bs{\theta}\rt)}{\wh{v}_j\lt( \bs{\theta}\rt)}$. Taylor expansion of $\nabla\wh{\phi}\lt(\bs{\theta}^*\rt)$ at $\bs{\theta} = \widehat{\bs{\theta}}$ shows that
+	\begin{flalign*}
+	\nabla\wh{\phi}\lt(\bs{\theta}^*\rt) =  \nabla\wh{\phi}(\wh{\bs{\theta}})- \nabla^2\wh{\phi}(\tilde{\bs{\theta}}) (\widehat{\bs{\theta}} - \bs{\theta}^{*}) + o_p(1),
+	\end{flalign*}
+	where $\tilde{\bs{\theta}}$ is between $\wh{\bs{\theta}}$ and $\bs{\theta}^*$. As $\widehat{\bs{\theta}}$ is the maximizer of $\widehat{\phi}\lt(\bs{\theta}\rt)$, it satisfies the first order condition that $\nabla \wh{\phi}(\widehat{\bs{\theta}}) = 0$. Therefore, 
+	\begin{flalign}
+	\sqrt{n}\nabla\wh{\phi}\lt(\bs{\theta}^*\rt) =   - \sqrt{n} \nabla^2\wh{\phi}( \tilde{\bs{\theta}}) (\widehat{\bs{\theta}} - \bs{\theta}^{*}),
+	\end{flalign}
+	where $\nabla\wh{\phi}\lt(\bs{\theta}\rt) = \,\,\nabla\wh{v}_1(\bs{\theta}) - \mu \sum_{j=2}^J \sfrac{\nabla\wh{v}_j\lt( \bs{\theta}\rt)}{\wh{v}_j\lt( \bs{\theta}\rt)}$.
+	Recall $v_1\lt(\bs{\theta}\rt)=- V_1\lt(\bs{\theta}\rt)$ and  $v_j\lt(\bs{\theta}\rt) = V_j\lt(\bs{\theta}\rt) - \nu_j$, for $j = 2, \cdots, J$.  Due to Corollary 2.1.2, together with (A.4) and (A.5),
+	\begin{flalign}
+	\sqrt{n}\bigg(\nabla\wh{v}_1(\bs{\theta}^*) - \nabla v_1(\bs{\theta}^*)\bigg)\overset{d}{\to}N\lt( 0, \bs{C}^*\rt),
+	\end{flalign}
+		where $\bs{C}^*=AV\bigg(\nabla v_1(\bs{\theta}^*)\bigg) =\mathbb{E}\lt\{  \nabla v_1(\bs{\theta}^*)\nabla^{\itl} v_1(\bs{\theta}^*) \rt\} - \mathbb{E}\nabla v_1(\bs{\theta}^*) \mathbb{E}\nabla^{\itl} v_1(\bs{\theta}^*)$\\
+		$ = AV\lt(\pard[\bs{\theta}]\int y \,d  F_{Y_j^*(\bs{\theta})}(y | \bs{H}_{1,i} )\rt)$. That is,
+%	\begin{gather*}
+%	\begin{flalign*}
+%	\bs{C}^* \triangleq =&AV\bigg(\nabla v_1(\bs{\theta}^*)\bigg)=
+%	AV\lt[\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X} \rt] = p\lim_{n \to \infty} V\lt[\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X} \rt] \\
+%	= & p\underset{n \to \infty}\lim \lt[ \mathbb{E} \lt\{ \frac{4\bs{\beta}^{*\itl}_{1}\bs{X}_1\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h^2}k^2\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\bs{X}^{\itl}\rt\} -  \mathbb{E}\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\} \mathbb{E}\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}^{\itl} \rt] \\
+%	= & \mathbb{E}\lt\{  4\big(\bs{X}_1^{\itl}\bs{\beta}^*_{1}\delta\lt(\bs{X}^{\itl}\bs{\theta}^*\rt)\big)^2\bs{X}\bs{X}^{\itl} \rt\} - \mathbb{E}\lt\{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}\delta\lt(\bs{X}^{\itl}\bs{\theta}^*\rt)\bs{X}\rt\} \mathbb{E}\lt\{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}\delta\lt(\bs{X}^{\itl}\bs{\theta}^*\rt)\bs{X}\rt\}^{\itl}\\
+%	=& \mathbb{E}\lt\{  \nabla v_1(\bs{\theta}^*)\nabla^{\itl} v_1(\bs{\theta}^*) \rt\} - \mathbb{E}\lt\{\nabla v_1(\bs{\theta}^*)\rt\} \mathbb{E}\lt\{\nabla^{\itl} v_1(\bs{\theta}^*)\rt\}.
+%	\end{flalign*}
+%	\end{gather*}
+	Then, due to (B.1) and (B.2), we have
+	\begin{flalign}
+	\sum_{j=2}^J \frac{\nabla\wh{v}_j\lt( \bs{\theta}\rt)}{\wh{v}_j\lt( \bs{\theta}\rt)} -  \sum_{i=2}^{J}\frac{\nabla v_j(\bs{\theta})}{v_j(\bs{\theta})} = o_p(1).
+	\end{flalign}
+	Note $v_j(\bs{\theta}) > 0$, for $j =2, \cdots, J$, is implied by the log barrier operator. Put (B.2) and (B.3) together by Slutsky's theorem, we have
+	\begin{flalign*}
+	\sqrt{n}\lt\{\lt(\nabla\wh{v}_1(\bs{\theta}^*) - \mu \sum_{j=2}^J \frac{\nabla\wh{v}_j\lt( \bs{\theta}^*\rt)}{\wh{v}_j( \bs{\theta}^*)}\rt) - \lt(\nabla v_1(\bs{\theta}^*) - \mu \sum_{i=2}^{J}\frac{\nabla v_j(\bs{\theta}^*)}{v_j(\bs{\theta}^*)}\rt)\rt\}\overset{d}{\to}N\lt(0, \bs{C}^*\rt),
+	\end{flalign*} 
+	Due to the stationarity of $\bs{\theta}^*$, $\nabla \phi(\bs{\theta}^*)=\nabla v_1(\bs{\theta}^*) - \mu \sum_{i=2}^{J}\sfrac{\nabla v_j(\bs{\theta}^*)}{v_j(\bs{\theta}^*)} =0$. Together with Sluskty's theorem, we have 
+	\begin{flalign*}
+	\sqrt{n} \nabla\wh{\phi}( \bs{\theta}^*) \overset{d}{\to} N\lt(0, \bs{C}^*\rt),
+	\end{flalign*}
+	where 
+	$\bs{C}^* =\mathbb{E}\lt\{  \nabla v_1(\bs{\theta}^*)\nabla^{\itl} v_1(\bs{\theta}^*) \rt\} - \mathbb{E}\lt\{\nabla v_1(\bs{\theta}^*)\rt\} \mathbb{E}\lt\{\nabla^{\itl} v_1(\bs{\theta}^*)\rt\}.$ \\
+	
+	As $	\sqrt{n}\nabla\wh{\phi}\lt(\bs{\theta}^*\rt) =  - \sqrt{n} \nabla^2\wh{\phi}( \tilde{\bs{\theta}}) (\widehat{\bs{\theta}} - \bs{\theta}^{*})$ stated in (A.7),we have
+	\begin{flalign}
+	\sqrt{n} \nabla^2\wh{\phi}( \tilde{\bs{\theta}}) (\widehat{\bs{\theta}} - \bs{\theta}^{*}) \overset{d}{\to} N(0, \bs{C}^*)
+	\end{flalign} 	
+	The Hessian is $\nabla^2\wh{\phi}\lt(\bs{\theta}\rt) = \,\,\nabla^2\wh{v}_1(\bs{\theta}) - \mu \sum_{j=2}^J \sfrac{\big(\nabla^2\wh{v}_j\lt( \bs{\theta}\rt)\wh{v}_j\lt( \bs{\theta}\rt)- \lt(\nabla\wh{v}_j\lt( \bs{\theta}\rt)\rt)^2\big)}{\wh{v}^2_j\lt( \bs{\theta}\rt)}$. Based on (A.4) and (A.5), we have
+	\begin{gather}
+	\begin{flalign}
+	\bs{D}^* \triangleq & p\lim_{n \to \infty}\nabla^2\wh{\phi}\lt(\bs{\theta}^*\rt) =  \nabla^2 \phi(\bs{\theta}^*)
+	=\nabla^2{v}_1(\bs{\theta}^*) - \mu \sum_{j=2}^J \frac{\nabla^2{v}_j\lt( \bs{\theta}^*\rt)v_j\lt( \bs{\theta}^*\rt)- \lt\{\nabla v_j\lt( \bs{\theta}^*\rt)\rt\}^2}{v^2_j\lt( \bs{\theta}^*\rt)}.
+	\end{flalign}
+	\end{gather}
+	
+	As $\tilde{\bs{\theta}}$ is a vector in-between $\bs{\theta}^*$ and $\wh{\bs{\theta}}$, we have $\nabla^2\wh{\phi}(\tilde{\bs{\theta}}) = \nabla^2\wh{\phi}(\bs{\theta}^*) + o_p(1)$. Therefore, based on (A.10) and (A.11), we have 
+	\begin{flalign*}
+	\sqrt{n}\lt(\widehat{\bs{\theta}} - \bs{\theta}^*\rt) \overset{d}{\to} N\lt(\bs{0}, \bs{\Sigma}^* \rt),
+	\end{flalign*}
+	where $\bs{\Sigma}^* = \bs{D}^{*-1}\bs{C}^{*}\bs{D}^{*-1}$, 
+	$\bs{C}^* =\mathbb{E}\lt\{  \nabla v_1(\bs{\theta}^*)\nabla^{\itl} v_1(\bs{\theta}^*) \rt\} - \mathbb{E}\nabla v_1(\bs{\theta}^*) \mathbb{E}\nabla^{\itl} v_1(\bs{\theta}^*)$ and $\bs{D}^*  =  \nabla^2 \phi(\bs{\theta}^*)$.
+\end{proof}

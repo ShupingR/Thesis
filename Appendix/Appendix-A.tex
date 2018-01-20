@@ -1,0 +1,649 @@
+\chapter{Supplement materials for Chapter 1}
+\section{Conditions for convergence of the penalty-barrier trajectory for mixed constraints}
+We revisit the conditions under which the  penalty-barrier trajectory converging to the solution to the original mixed-constraint problem. The original inequality-equality constrained problem is 
+\begin{align}
+\begin{split}
+&\underset{\bs{x} \in \mb{R}^n}{\text{minimize }}f\lt(\bs{x}\rt)\\
+\text{subject to }&  c_i\lt(\bs{x}\rt) \ge 0, i\in \mathcal{I} \text{, and } c_j\lt(\bs{x}\rt) = 0, j \in \mathcal{E} ,
+\end{split}
+\end{align}
+where $\mathcal{I}$ is the set of the indices for inequality constraints, and $\mathcal{E}$ is the set of the indices for equality constraints. Let $\bs{x}^*$ denote a solution to the original problem (A.1). A classical strategy to solve this mixed constraint problem is to find an unconstrained minimizer of a composite function that consists of the objective function, the barrier penalty for the inequality constraints, and the quadratic penalty for the equality constraints, i.e., a penalty-barrier function. It is defined as
+\begin{align}
+\Phi_{PB}\lt(\bs{x}, \mu \rt) \triangleq f\lt(\bs{x}\rt) - \mu \underset{ i \in \mathcal{I}}{\sum} \text{log }c_i\lt(\bs{x}\rt) + \frac{1}{2\mu} \underset{j \in \mathcal{E}}{\sum}c^2_j\lt(\bs{x}\rt),
+\end{align}
+where $\mu$ is a sequence of sufficiently small, positive decreasing constants. Let $\bs{x}(\mu)$ denote an unconstrained minimizer of $\Phi_{PB}(\bs{x}, \mu)$. The following theorem gives the conditions that ensure the convergence of the differentiable penalty-barrier trajectory sequence $\lt\{ \bs{x}(\mu)\rt\}$ to the original solution $\bs{x}^*$.
+\begin{theorem}[Second-Order Sufficient Conditions for Problem (A.1)~\cite{fiacco, Forsgren2002}]
+	Sufficient conditions that a point $\bs{x}^*$ be an isolated (uniquely) local minimum of Problem (A.1), where $f$, $c_i, \, \forall i \in \mathcal{I}$, and $c_j, \forall j \in \mathcal{E}$ are twice-differentiable functions, are that there exist vectors $\lambda_{\mathcal{I}}^*$ and $\lambda_{\mathcal{E}}^*$ such that $\lt(\bs{x}^*, \lambda_{\mathcal{I}}^*, \lambda_{\mathcal{E}}^*\rt)$ satisfies
+	\begin{enumerate}
+		\item $\bs{x}^*$ is feasible and the LICQ (Linear Independence Constraint Qualification) holds at $\bs{x}^*$, i.e., the Jacobian matrix of active constraints at $\bs{x}^*$, $J_{\mathcal{A}}(\bs{x}^*)$, has full row rank;
+		\item $\bs{x}^*$ is a KKT point and strict complementarity holds, i.e, the (necessarily unique) multiplier $\lambda^*$ has the property that $\lambda_i^* > 0$, for all $i  \in \mathcal{A}_{\mathcal{I}}(\bs{x}^*)$, the set of indices of active inequality constraints at $\bs{x}^*$;
+		\item for all nonzero vectors $p$ satisfying $J_{\mathcal{A}}(\bs{x}^*)\bs{p} = 0$, there exists $\omega > 0$ such that $\bs{p}^{\itl}H(\bs{x}^*, \lambda^*) \bs{p} \ge \omega \|\bs{p}\|^2$., where $H(\bs{x}^*, \lambda^*) $ is the hessian of the Lagrangian at $\bs{x}^*$ and $\lambda^*$.
+	\end{enumerate}
+\end{theorem}
+\begin{theorem}[Isolated Trajectory for $\Phi_{PB}(\bs{x}, \mu)$ Function~\cite{fiacco, Forsgren2002}]
+	If (a) the functions $f$, $c_i, \forall i \in \mathcal{I}$, and $c_j, \,\forall j \in \mathcal{E}$ are twice differentiable, (b) the gradients $\nabla c_i, \,\forall i \in \mathcal{I}$, and $\nabla c_j, \forall j \in \mathcal{E}$ are linearly independent, (c) strict complementarity holds for  $u_i^* c_i (\bs{x}^*) = 0, \forall i \in \mathcal{I}$, and (d) the sufficient conditions stated above under which $\bs{x}^*$ be an isolated local constrained minimum of Problem (A.1) are satisfied by $\lt(\bs{x}^*, \lambda_{\mathcal{I}}^*, \lambda_{\mathcal{E}}^*\rt)$, then there is a positive neighborhood about $\mu = 0$ for which a unique-isolated differentiable function $\bs{x}(\mu)$ exists that describes a unique isolated trajectory of local minima of $\Phi_{PB}\lt(\bs{x}, \mu\rt)$, where $\bs{x}\lt(\mu\rt) \to \bs{x}^*$ as $\mu \to 0$.
+\end{theorem}
+Note that $c_i\lt(\bs{x}\rt), \forall i \in \mathcal{I}$ is embedded  in the log operator, $c_i(\bs{x}_\mu)> 0$ is enforced implicitly.
+\section{Proof of Theorem 1.1.2}
+\begin{theorem}
+	For any fixed $\mu$, assume 
+	\begin{enumerate}
+		\item Point-wise convergence of $\wh{v}_j(\bs{\theta})$ in probability:\\ For every $ \bs{\theta} \in \ml{F}(\bs{\Theta})$, we have $ \underset{n \to \infty}{\lim} \text{Pr} \lt\{ \mid v_j(\bs{\theta}) - \wh{v}_j(\bs{\theta}) \mid \le \epsilon_j \rt\}  = 1$, $\forall \epsilon_j > 0$, where $j = 1, \cdots, J$;
+		\item Existence of a strict local minimizers of $\phi^{PB}_{\mu}\lt(\bs{\theta}\rt)$:\\
+		There exists a neighborhood of $\bs{\theta}^{*}_{\bs{\nu}}(\mu)$, denoted $\ml{N}\lt(\bs{\theta}^{*}_{\bs{\nu}}(\mu)\rt)$ such that $\phi^{PB}_{\mu}\lt(\bs{\theta}^{*}_{\bs{\nu}}(\mu)\rt) < \phi^{PB}_{\mu}\lt(\bs{\theta}\rt)$, for any $\bs{\theta} \in \ml{N}\lt(\bs{\theta}^{*}_{\bs{\nu}}(\mu)\rt)$;
+		\item Existence of strict local minimizer $\wh{\bs{\theta}}_{\bs{\nu}}(\mu)$ of $\wh{\phi}^{PB}_{\mu}\lt(\bs{\theta}\rt)$ in the neighborhood $\ml{N}\lt(\bs{\theta}^{*}_{\bs{\nu}}(\mu)\rt)$:\\  
+		$ \wh{\phi}^{PB}_{\mu}\lt(\wh{\bs{\theta}}_{\bs{\nu}}(\mu)\rt) < \wh{\phi}^{PB}_{\mu}\lt(\bs{\theta}\rt)$, for any $\bs{\theta} \in \ml{N}\lt(\bs{\theta}^{*}_{\bs{\nu}}(\mu)\rt)$, where $\wh{\bs{\theta}}_{\bs{\nu}}(\mu) \in \ml{N}\lt(\bs{\theta}^{*}_{\bs{\nu}}(\mu)\rt)$;
+	\end{enumerate} then 
+	$$\wh{\bs{\theta}}_{\bs{\nu}}(\mu) \overset{p}{\to} \bs{\theta}^{*}_{\bs{\nu}}(\mu).$$
+	%\begin{equation*}
+	%\begin{aligned}
+	%\underset{\bs{\theta} \in \ml{F}(\bs{\Theta})}{\sup} \mid \wh{\phi}^{PB}_{\mu}(\bs{\theta}) - \phi^{PB}_{\mu}(\bs{\theta})\mid = o_{p}(1).
+	%\end{aligned}
+	%\end{equation*}
+	
+	%Assume 1 - 3 in Lemma 1.1.2 hold, and then, for any fixed $\mu$,
+	%\begin{equation*}
+	%\begin{aligned}
+	%\wh{\bs{\theta}}_{\bs{\nu}}(\mu) \overset{p}{\to} \bs{\theta}^{*}_{\bs{\nu}}(\mu).
+	%\end{aligned}
+	%\end{equation*}
+\end{theorem}
+
+\begin{proof}
+	In this part, we simplify the notations locally just for this proof. Suppose there exists a local minimum $\bs{\theta}^{*} = \bs{\theta}^{*}_{\bs{\nu}}(\mu)$. Let its estimator be $ \wh{\bs{\theta}} = \wh{\bs{\theta}}_{\bs{\nu}}(\mu)$ and its neighborhood $\ml{N}^{*} = \ml{N}\lt(\bs{\theta}^{*}_{\bs{\nu}}(\mu)\rt)$. Also, let $\phi\lt(\bs{\theta}\rt) = \phi^{PB}_{\mu}\lt(\bs{\theta}\rt)$ and $\wh{\phi}(\bs{\theta}) = \wh{\phi}^{PB}_{\mu}\lt(\bs{\theta}\rt)$.
+	By assumption 1, $\lvert \phi(\bs{\theta}^*) - \wh{\phi}(\bs{\theta}^*) \rvert = o_p(1)$, as $n \to \infty$; $\lvert \phi(\wh{\bs{\theta}}) - \wh{\phi}(\wh{\bs{\theta}}) \rvert = o_p(1)$, as $n \to \infty$. Both $\bs{\theta}^* \in \ml{N}^*$ and $\wh{\bs{\theta}} \in \ml{N}^*$ .
+	\begin{flalign*} 
+	\phi(\bs{\theta}^*) & = \wh{\phi}(\widehat{\bs{\theta}}) + \lt\{\phi(\bs{\theta}^*) - \wh{\phi}(\widehat{\bs{\theta}})\rt\} \\
+	& > \wh{\phi}(\widehat{\bs{\theta}}) + \lt\{\phi(\bs{\theta}^*) - \wh{\phi}(\bs{\theta}^*)\rt\} \text{ (by assumption 3) }\\
+	& \ge \wh{\phi}(\widehat{\bs{\theta}}) - \lvert \phi(\bs{\theta}^*) - \wh{\phi}(\bs{\theta}^*)\rvert \\
+	& = \phi(\widehat{\bs{\theta}}) + \lt\{\wh{\phi}(\widehat{\bs{\theta}}) - \phi(\widehat{\bs{\theta}})\rt\}  - \lvert \phi(\bs{\theta}^*) - \wh{\phi}(\bs{\theta}^*)\rvert \\
+	& \ge \phi(\widehat{\bs{\theta}}) - \lv \wh{\phi}(\widehat{\bs{\theta}}) - \phi(\widehat{\bs{\theta}})\rv - \lvert \phi(\bs{\theta}^*) - \wh{\phi}(\bs{\theta}^*)\rvert \\
+	& \ge \phi(\widehat{\bs{\theta}}) + o_p(1) \text{ (implied by assumption 1) }
+	\end{flalign*}
+	Suppose $\wh{\bs{\theta}} \not\to \bs{\theta}^*$, and then $\phi(\bs{\theta}^*) > \liminf \phi(\wh{\bs{\theta}})$. This is opposed to assumption 2, which claims $\bs{\theta}^*$ to be a strict local minimizer. By contradictory, it is proven that $\wh{\bs{\theta}} \overset{p}{\to} \bs{\theta}^*$, as $n \to \infty$.
+\end{proof}
+\section{Consistency of Kernel Density Estimators}
+As kernel density estimators (KDEs) are used to estimate values of regimes, we review the necessary asymptotic properties of Kernel Density Estimators briefly here.
+\subsection{Consistency of univariate Kernel Density Estimator }
+We review uniform consistency of Kernel Density Estimators for a univariate distribution $g(x)$ ~\cite{Silverman1978a,Pagan1999}. Consider the kernel estimate $\widehat{g}_n(x)$ of a real univariate density $g(x)$ introduced by Rosenblatt (1956) ~\cite{Silverman1978a,Pagan1999},  and defined as 
+$$\widehat{g}_n(x) = \sum_{i=1}^{n} \frac{1}{nh} k\left( \frac{x-X_i}{h}\right),$$
+where $X_1, \cdots, X_n$ are identically independent observations from the  distribution $g(x)$; $k$ is a kernel function satisfying suitable conditions given below; $h = h_n$ is the bandwidth which is also a function of sample size $n$.
+\begin{theorem}[Uniform consistency of univariate Kernel Density Estimators]~\cite{Pagan1999,Silverman1978a}
+	If all the following assumptions hold,
+	\begin{enumerate}
+		\item If the kernel density function $k(s)$ satisfies
+		\begin{enumerate}
+			\item $\int k(s)\,ds=1$;
+			\item $\int \mid k(s) \mid \,ds<\infty$;
+			\item $\left|s\right|\left|k(s)\right| \to 0,$ as $s \to \infty$;
+			\item $\sup\left|k(s)\right|<\infty$.
+			%\item $\int k^{2}(s)\,ds<\infty$.
+		\end{enumerate}
+		\item The bandwidth $h$ satisfies that $h \to 0$ and $nh^2 \to \infty$, as $n \to \infty$;
+		\item $g(x)$ is uniformly continuous on $\mathbb{R}$;
+		\item The characteristic function $\phi(t)$ of a random variable $s$ with the density $k(s)$,  $\psi(t) = \int e^{its} k(s)\,ds$, is absolutely integrable,
+	\end{enumerate}
+	and then we have that $\widehat{g}_n(x)$ is uniformly weak consistent, that is, 
+	$$\underset{n \to \infty}{p\lim} \left[\underset{x}{\sup} \mid \widehat{g}_n(x) - g(x) \mid  \right] = 0,$$
+	where $\underset{n \to \infty}{p\lim}$ denotes convergence in probability.
+\end{theorem} 
+\subsection{Consistency of multivariate Kernel Density Estimator }
+The uniform convergence theorem of univariate Kernel Density Estimators above is extended to multivariate case by Cacoullos (1964)~\cite{Theo}. Consider an estimator of a $d$-dimensional density function $g(\boldsymbol{x})$ of the following form:
+\begin{gather*}
+\widehat{g}_n(\boldsymbol{x}) = \frac{1}{h^{d}} \sum_{i=1}^{n}\bar{k}\left( \frac{\boldsymbol{x} - \boldsymbol{X}_i}{h}\right)
+\end{gather*}
+where $\bar{k}(\boldsymbol{s})$ is a multivariate kernel of choice satisfying suitable conditions given below, and $h = h_n$ is the bandwidth. 
+\begin{theorem}[Uniform consistency of multivariate Kernel Density Estimators]~\cite{Theo}
+	Assume:
+	\begin{enumerate}
+		\item $\bar{k}(\boldsymbol{s})$ is a Borel scalar function on $\mathbb{R}^{d}$, where $\boldsymbol{s} := (s_1, \cdots, s_{d})$ such that 
+		\begin{enumerate}
+			\item $\idotsint \bar{k}(\boldsymbol{s}) \,ds_1\cdots \,ds_{d} = 1$;
+			\item $\idotsint | \bar{k}(\boldsymbol{s}) | \,ds_1\cdots \,ds_{d}<\infty$;
+			\item $|\boldsymbol{s}|^{d}|\bar{k}(\boldsymbol{s})| \to 0,$ as $\boldsymbol{s} \to \infty$, where $|\boldsymbol{s}|$ is the length of $\boldsymbol{s}$;
+			\item $\underset{\boldsymbol{s}}{\sup} | \bar{k}(\boldsymbol{s}) | < \infty$.
+		\end{enumerate}
+		\item $h \to 0$ and $nh^{2d} \to \infty$, as $n \to \infty$;
+		\item $g(\boldsymbol{x})$ is uniformly continuous in $\mathbb{R}^{d}$;
+		\item The characteristic function of a random vector $\boldsymbol{s}$ with the density  of $\bar{k}(\boldsymbol{s})$, $\psi(\boldsymbol{t}) = \idotsint e^{i\boldsymbol{t}^{\intercal}\boldsymbol{s}} \bar{k}(\boldsymbol{s})\,d\boldsymbol{s}$,  is absolutely integrable,
+	\end{enumerate}
+	and then, $\widehat{g}_n(\boldsymbol{x})$ is uniform consistent, that is,
+	\begin{gather*}
+	\underset{n \to \infty}{p\lim}  \left[ \underset{\boldsymbol{x}}{\sup} \left|\widehat{g}_n(\boldsymbol{x}) - g(\boldsymbol{x}) \right| \right] = 0.
+	\end{gather*}
+\end{theorem}
+Usually, we use a product kernel for multivariate distributions. For random vector $\boldsymbol{S}  \in \mathbb{R}^{d}$, $\boldsymbol{S} := ( S_1, \cdots, S_{d})$,
+\begin{flalign*}
+\frac{1}{h^{d}}\bar{k}\left(\frac{\boldsymbol{s}}{h}\right) = \frac{1}{h^{d}}\prod_{j=1}^{d}k\left(\frac{s_j}{h}\right),
+\end{flalign*}
+where $k(s)$ is a suitable univariate kernel function. Here, we exposit the bandwidths for each component with the same magnitude, $h_n = h$. which is also inferred by optimal bandwidth choice.
+%\section{Estimating the value functions via KDE}
+%We derive the value function estimator using KDE. Recall the $j$-th value function is modeled as $$V_j\lt(\bs{\theta}\rt) = m_{\bs{\alpha}^*_j}+ \iint \tsgn\lt(z_1\rt)z_2 f_{\bs{\beta}^*_j}\lt(z_1, z_2; \bs{\theta}\rt) \,dz_1 \,dz_2,$$ 
+%Note, for any fixed $\bs{\beta}_j$, {\small$\iint\text{sgn}(z_1)z_2\,f_{\bs{\beta}_j}\left(z_1,z_2;\bs{\theta}\right)\,dz_1\,dz_2 =  2\iint z_2\,\mathbb{I}\left(z_1\ge0\right)\,f_{\bs{\beta}_j}\left(z_1, z_2;\bs{\theta}\right)\,dz_1\,dz_2-\int z_2\,f_{\bs{\beta}_{j}}\left(z_2\right)\,dz_2.$} To estimate this quantity, we plug in kernel density estimators for $f_{\bs{\beta}_j}(z_1, z_2; \bs{\theta})$
+%and $f_{\bs{\beta}_j}( z_2 )$, and get
+%
+%\begin{equation}
+%	\begin{aligned}
+% & \iint \tsgn\lt(z_1\rt)z_2 \wh{f}_{\bs{\beta}_j}\lt(z_1, z_2; \bs{\theta}\rt) \,dz_1 \,dz_2\\
+%=&2\iint z_2\,\mathbb{I}\left(z_1\ge0\right)\,\wh{f}_{\bs{\beta}_j}\left(z_1, z_2;\bs{\theta}\right)\,dz_1\,dz_2-\int z_2\,\wh{f}_{\bs{\beta}_{j}}\left(z_2\right)\,dz_2\\
+%= &2\iint z_2\,\mathbb{I}\left(z_1\ge0\right)\lt\{\frac{1}{nh^2}\sum_{i=1}^{n}k\left(\frac{z_1-Z^i_1}{h}\bigg)k\bigg(\frac{z_2-Z^{i}_2}{h}\right)\rt\}\,dz_1\,dz_2-\int z_2\lt\{\frac{1}{nh}\sum_{i=1}^{n}k\left(\frac{z_2-Z^{i}_2}{h}\right)\rt\}\,dz_2\\
+%=  &\frac{2}{n}\sum_{i=1}^{n}\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\left\{ 1-K\left(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\right)\right\} -\frac{1}{n}\sum_{i=1}^{n}\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\\
+%= &\frac{1}{n}\sum_{i=1}^{n}\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\left\{ 1-2K\left(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\right)\right\},
+%\end{aligned}
+%\end{equation}
+%where $K(s)$ is the corresponding CDF of the kernel function $k(s)$.The third equality is derived in the following. As we use the Gaussian kernel for $k(s)$, it satisfies the following
+%\begin{enumerate}
+%	\item $\int_{-\infty}^{\infty}k(s)\,ds=1$;
+%	\item $k(s)>0$ for all $s$;
+%	\item $k(-s)=k(s)$ for all $s$; 
+%	\item The first order derivative of the kernel, $k^{\prime}(s)$, exists and is bounded. 
+%\end{enumerate}
+%To calculate the first term on the right hand side, let $s=\frac{z_1-Z_1^i}{h}$ and $t=\frac{z_2-Z^{i}_2}{h}$.
+%Then, $z_1=Z^{i}_1+sh$ and $z_2=Z^{i}_2+th$. Also,
+%$dz_1=h\,ds$ and $\,dz_2=h\,dt$. Then,
+%\begin{flalign*} 
+%&\frac{2}{h^2}\iint z_2\,\mathbb{I}\left(z_1\ge0\right)k\lt(\frac{z_1-Z^i_1}{h}\rt)k\lt(\frac{z_2-Z_2^{i}}{h}\rt)\,dz_1\,dz_2\\
+%= & 2\iint\left(Z_2^i+th\right)\,\mathbb{I}\left(Z_1^i+sh\ge0\right)k\left(s\right)k\left(t\right)\,ds\,dt\\
+%= & 2\iint Z_2^i\,\mathbb{I}\left(Z_1^i+sh\ge0\right)k\left(s\right)k\left(t\right)\,ds\,dt + 2\iint th \,\mathbb{I}\left(Z_1^i+sh\ge0\right)k\left(s\right)k\left(t\right)\,ds\,dt\\
+%= &  2\int Z_2^i\,\mathbb{I}\left(s\ge -\sfrac{ Z_1^i}{h}\right)k\left(s\right)\,ds + 0 \\
+%= &  2 Z_2^i \lt\{ 1 - K\lt(-\sfrac{Z_1^i}{h} \rt) \rt\} \\
+%= & 2\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\left\{ 1-K\left(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\right)\right\},
+%\end{flalign*}
+%where $K\left(s\right)=\int k\left(s\right)\,ds+c$. The
+%third equality holds, as $\int k(t)\,dt=1$ and $\int t\,k(t)\,dt=0$.
+%The fourth equality holds as $\int\mathbb{I}\left(s\ge-\sfrac{Z_i}{h}\right)k\left(s\right)\,ds=1-\int_{-\infty}^{-\sfrac{Z^i_1}{h}}k\left(s\right)\,ds=1-K\left(-\sfrac{Z^i_1}{h}\right)$,
+%where $Z^i_1=\bs{X}^{i\intercal}\bs{\theta}$ and  $Z^i_2=\bs{X}_1^{i\intercal}\bs{\beta}_j$.\\
+%
+%To calculate the second term on the right hand side, we derive $\frac{1}{h}\int z_2k(\frac{z_2-Z^i_2}{h})\,dz_2$ by changing variable similarly. Let $t=\frac{z_2-Z^i_2}{h}$
+%,and we get $z_2=Z^i_2+th$ and $\,dz_2=h\,dt$. Then,
+%\begin{flalign*}
+%&\frac{1}{h}\int z_2k\left(\frac{z_2-Z^i_2}{h}\right)\,dz_2
+%=  \int\left(Z^{i}_2+th\right)k\left(t\right)\,dt
+%=  Z^{i}_2
+%= \bs{X}_{1}^{i\intercal}\bs{\beta}_{j}.
+%\end{flalign*}
+%Again, the second equality holds as $\int k(t)\,dt=1$,
+%and $\int t\,k(t)\,dt=0$. Together, we complete the derivation for (A.3).
+%
+\section{Estimating the value functions via KDE}
+We derive the value function estimator using KDE. Recall the $j$-th value function is modeled as $$V_j\lt(\bs{\theta}\rt) = m_{\bs{\alpha}^*_j}+ \iint \tsgn\lt(z_1\rt)z_2 f_{\bs{\beta}^*_j}\lt(z_1, z_2; \bs{\theta}\rt) \,dz_1 \,dz_2,$$ 
+Note, for any fixed $\bs{\beta}_j$, {\small$\iint\text{sgn}(z_1)z_2\,f_{\bs{\beta}_j}\left(z_1,z_2;\bs{\theta}\right)\,dz_1\,dz_2 =$\\$2\iint z_2\,\mathbb{I}\left(z_1\ge0\right)\,f_{\bs{\beta}_j}\left(z_1, z_2;\bs{\theta}\right)\,dz_1\,dz_2-\int z_2\,f_{\bs{\beta}_{j}}\left(z_2\right)\,dz_2.$} To estimate this quantity, we plug in kernel density estimators for $f_{\bs{\beta}_j}(z_1, z_2; \bs{\theta})$
+and $f_{\bs{\beta}_j}( z_2 )$, and get
+
+\begin{equation}
+\begin{aligned}
+& \iint \tsgn\lt(z_1\rt)z_2 \wh{f}_{\bs{\beta}_j}\lt(z_1, z_2; \bs{\theta}\rt) \,dz_1 \,dz_2\\
+=&2\iint z_2\,\mathbb{I}\left(z_1\ge0\right)\,\wh{f}_{\bs{\beta}_j}\left(z_1, z_2;\bs{\theta}\right)\,dz_1\,dz_2-\int z_2\,\wh{f}_{\bs{\beta}_{j}}\left(z_2\right)\,dz_2\\
+= &2\iint z_2\,\mathbb{I}\left(z_1\ge0\right)\lt\{\frac{1}{nhh}\sum_{i=1}^{n}k\left(\frac{z_1-Z^i_1}{h}\bigg)k\bigg(\frac{z_2-Z^{i}_2}{h}\right)\rt\}\,dz_1\,dz_2-\int z_2\lt\{\frac{1}{nh2}\sum_{i=1}^{n}k\left(\frac{z_2-Z^{i}_2}{h}\right)\rt\}\,dz_2\\
+=  &\frac{2}{n}\sum_{i=1}^{n}\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\left\{ 1-K\left(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\right)\right\} -\frac{1}{n}\sum_{i=1}^{n}\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\\
+= &\frac{1}{n}\sum_{i=1}^{n}\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\left\{ 1-2K\left(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\right)\right\},
+\end{aligned}
+\end{equation}
+where $K(s)$ is the corresponding CDF of the kernel function $k(s)$.The third equality is derived in the following. As we use the Gaussian kernel for $k(s)$, it satisfies the following
+\begin{enumerate}
+	\item $\int_{-\infty}^{\infty}k(s)\,ds=1$;
+	\item $k(s)>0$ for all $s$;
+	\item $k(-s)=k(s)$ for all $s$; 
+	\item The first order derivative of the kernel, $k^{\prime}(s)$, exists and is bounded. 
+\end{enumerate}
+To calculate the first term on the right hand side, let $s=\frac{z_1-Z_1^i}{h}$ and $t=\frac{z_2-Z^{i}_2}{h}$.
+Then, $z_1=Z^{i}_1+sh$ and $z_2=Z^{i}_2+th$. Also,
+$dz_1=h\,ds$ and $\,dz_2=h\,dt$. Then,
+\begin{flalign*} 
+&\frac{2}{hh}\iint z_2\,\mathbb{I}\left(z_1\ge0\right)k\lt(\frac{z_1-Z^i_1}{h}\rt)k\lt(\frac{z_2-Z_2^{i}}{h}\rt)\,dz_1\,dz_2\\
+= & 2\iint\left(Z_2^i+th\right)\,\mathbb{I}\left(Z_1^i+sh\ge0\right)k\left(s\right)k\left(t\right)\,ds\,dt\\
+= & 2\iint Z_2^i\,\mathbb{I}\left(Z_1^i+sh\ge0\right)k\left(s\right)k\left(t\right)\,ds\,dt + 2\iint th \,\mathbb{I}\left(Z_1^i+sh\ge0\right)k\left(s\right)k\left(t\right)\,ds\,dt\\
+= &  2\int Z_2^i\,\mathbb{I}\left(s\ge -\sfrac{ Z_1^i}{h}\right)k\left(s\right)\,ds + 0 \\
+= &  2 Z_2^i \lt\{ 1 - K\lt(-\sfrac{Z_1^i}{h} \rt) \rt\} \\
+= & 2\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\left\{ 1-K\left(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\right)\right\},
+\end{flalign*}
+where $K\left(s\right)=\int k\left(s\right)\,ds+c$. The
+third equality holds, as $\int k(t)\,dt=1$ and $\int t\,k(t)\,dt=0$.
+The fourth equality holds as $\int\mathbb{I}\left(s\ge-\sfrac{Z_i}{h}\right)k\left(s\right)\,ds=1-\int_{-\infty}^{-\sfrac{Z^i_1}{h}}k\left(s\right)\,ds=1-K\left(-\sfrac{Z^i_1}{h}\right)$,
+where $Z^i_1=\bs{X}^{i\intercal}\bs{\theta}$ and  $Z^i_2=\bs{X}_1^{i\intercal}\bs{\beta}_j$.\\
+
+To calculate the second term on the right hand side, we derive $\frac{1}{h}\int z_2k(\frac{z_2-Z^i_2}{h})\,dz_2$ by changing variable similarly. Let $t=\frac{z_2-Z^i_2}{h}$
+,and we get $z_2=Z^i_2+th$ and $\,dz_2=h\,dt$. Then,
+\begin{flalign*}
+&\frac{1}{h}\int z_2k\left(\frac{z_2-Z^i_2}{h}\right)\,dz_2
+=  \int\left(Z^{i}_2+th\right)k\left(t\right)\,dt
+=  Z^{i}_2
+= \bs{X}_{1}^{i\intercal}\bs{\beta}_{j}.
+\end{flalign*}
+Again, the second equality holds as $\int k(t)\,dt=1$,
+and $\int t\,k(t)\,dt=0$. Together, we complete the derivation for (A.3).
+\section{Proof of Lemma 1.1.3}
+\begin{lemma}
+	Suppose the following conditions hold 
+	\begin{enumerate}
+		%	\item $\bs{X}^{\itl}\bs{\theta}$ is bounded away from 0.
+		\item $\forall \bs{a} \in \mathbb{R}^p$, $\exists \,\delta > 0$ ,such that 
+		\begin{enumerate}
+			\item $\mathbb{E}\lt|\bs{a}^{\itl}\frac{2\bs{X}_{1}^{\itl}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}}{h}\rt)\bs{X}-\mu_{n}\rt|^{2+\delta} < \infty$, where $\mu_{n}=\mathbb{E}\lt\{\bs{a^{\itl}}\frac{2\bs{X}_{1}^{\itl}\bs{\beta}_{j}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\tau}}{h}\rt)\bs{X}\rt\}$
+			\item $\bs{\bs{a}^{\itl}}V\lt\{\frac{2\bs{X}^{\itl}_{1}\bs{\beta}_j}{h}k(-\frac{\bs{X}^{\itl}\bs{\theta}}{h})\bs{X}\rt\}\bs{a} ^{1+\frac{\delta}{2}}< \infty$.
+		\end{enumerate}
+	\end{enumerate} 
+	Then, for any fixed $\bs{\theta}$ and $\bs{\beta}_j$,
+	\begin{gather}
+	\begin{flalign*}
+	\sqrt{n}\lt(\nabla\wh{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt) -  \mb{E} \lt\{\frac{2\bs{X}_{1}^{\itl}\bs{\beta}_{j}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}}{h}\rt)\bs{X}\rt\}\rt)\overset{d}{\to}N\lt(0,AV\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}}{h}\rt)\bs{X}\rt\}\rt),
+	\end{flalign*}
+	\end{gather}
+	where $j = 1, \cdots, J$.
+\end{lemma}
+Notation $\nabla$ denotes the first-order derivatives with respect to $\bs{\theta}$. $AV$ stands for asymptotic variance. Moreover, recall that $\nabla\wh{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt)=\frac{1}{n}\sum_{i=1}^{n}\frac{2\bs{X}_{1}^{i\itl}\bs{\beta}_{j}}{h}k\lt(-\frac{\bs{X}^{i\itl}\bs{\theta}}{h}\rt)\bs{X}^{i}$.
+\begin{proof}
+	For any  $\bs{a} \in \mathbb{R}^p$, we let $W_{ni}=\bs{a^{\intercal}}\frac{2\bs{X}_{1}^{i\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\rt)\bs{X}_{i}$. For each value of $n$, $w_{n1},w_{n2},\cdots,w_{nn}$ are i.i.d, and functions of the sample size $n$. This is because that $\bs{X}_{i}$ are assumed to be i.i.d., and $h$ is a function of sample
+	size $n$. Then, we have
+	\begin{gather*}
+	\mu_{n}:=\mathbb{E}W_{ni}=\mathbb{E}\lt\{\bs{a^{\intercal}}\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}\rt\},
+	\end{gather*}
+	and 
+	\begin{gather*}
+	\sigma_{n}^{2}:=V(W_{ni})=\bs{\bs{a}^{\intercal}}V\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}\rt\}\bs{a}.
+	\end{gather*}
+	
+	%?????????????????????????????????????????????????????????? \\
+	%??? Delta method and Taylor expansion for approximation ??? \\
+	%?????????????????????????????????????????????????????????? \\
+	We let $G_{ni}=W_{ni}-\mu_{\ensuremath{n}}$, and $T_{n}=\sum_{i=1}^{n}G_{ni}$. Also, we let $s_{n}^{2}=V(T_{n})=\sum_{i=1}^{n}V(G_{ni})=\sum_{i=1}^{n}\sigma_{n}^{2}=n\sigma_{n}^{2}$, where the second equality is because of independence, and the last equality is due to identicalness. Therefore, $\sfrac{T_{n}}{s_{n}}$ has mean 0, and variance 1.  If we can show $G_{ni}$ satisfying the Lyapunov condition, then
+	we have
+	\[
+	\frac{T_{n}}{s_{n}}\overset{d}{\to}N(0,1),
+	\]
+	as $n \to \infty$.
+	
+	Now, we check the Lyapunov condition, that is,~\cite{Lindsay1995,Hunter2014}
+	\begin{gather*}
+	\exists\delta>0, \text{ such that } \frac{1}{s_{n}^{2+\delta}}\sum_{i=1}^{n}\mathbb{E}\mid G_{n,i}\mid^{2+\delta}\to0, \text{ as } n\to0. 
+	\end{gather*}
+	We define, for any $\bs{a}$, 
+	\begin{gather*}
+	C_1 \triangleq \mathbb{E}\lt|G_{ni}\rt|^{2+\delta}=\mathbb{E}\lt|W_{ni}-\mu_{\ensuremath{n}}\rt|^{2+\delta}=\mathbb{E}\lt|\bs{a}^{\intercal}\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}-\mu_{n}\rt|^{2+\delta},
+	\end{gather*}
+	and 
+	\begin{gather*}
+	C_2 \triangleq s_{n}^{2+\delta}=n^{1+\frac{\delta}{2}}\sigma_{n}^{2+\delta}=n^{1+\frac{\delta}{2}}\lt\{ \bs{\bs{a}^{\intercal}}V\lt[\frac{2\bs{X}^{\intercal}_{1}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}\rt]\bs{a}\rt\} ^{1+\frac{\delta}{2}}.
+	\end{gather*}
+	Then, we have
+	\begin{flalign*}
+	&\frac{1}{s_{n}^{2+\delta}}\sum_{i=1}^{n}\mathbb{E}\mid G_{n,i}\mid^{2+\delta}\\
+	=&\frac{n\mathbb{E}\lt|\bs{a}^{\intercal}\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}_j}{h}k(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h})\bs{X}-\mu_{n}\rt|^{2+\delta}}{n^{1+\frac{\delta}{2}}\lt\{ \bs{a}^{\intercal}V\lt[\frac{2\bs{X}_{1}^{\intercal}\beta}{h}k(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h})\bs{X}\rt]\bs{a}\rt\} ^{1+\frac{\delta}{2}}}\\
+	=&\frac{\mathbb{E}\lt|\bs{a}^{\intercal}\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}_j}{h}k(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h})\bs{X}-\mu_{n}\rt|^{2+\delta}}{n^{\frac{\delta}{2}}\lt\{ \bs{a}^{\intercal}V\lt[\frac{2\bs{X}^{\intercal}_{1}\bs{\beta}_j}{h}k(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h})\bs{X}\rt]\bs{a}\rt\} ^{1+\frac{\delta}{2}}} \\
+	=&\frac{C_{1}}{n^{\frac{\delta}{2}}C_{2}}.
+	\end{flalign*}
+	
+	As long as $\delta>0$, for finite $C_1$ and finite $C_2$, we have $\sfrac{C_{1}}{n^{\frac{\delta}{2}}C_{2}}\to0$,
+	as $n\to\infty$. This means that the Lyapunov condition is satisfied, if $\mathbb{E}\lt|G_{ni}\rt|^{2+\delta}$ and $s_{n}^{2+\delta}$ are finite. Then,  by Lyapunov Central Limit Theorem, we have
+	\begin{gather*}
+	\frac{T_{n}}{s_{n}}\overset{d}{\to}N(0,1).
+	\end{gather*}
+	
+	As this hold for any arbitary non-random vector $\bs{a}\in \mathbb{R}^p$, we have, by Cramer-Wold Theorem, that
+	\begin{gather*}
+	\sqrt{n}\lt[\sum_{i=1}^{n}\frac{2\bs{X}_{1}^{i\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\rt)\bs{X}_{i}-\mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}\rt\}\rt]\overset{d}{\to}N\lt(0,V\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}\rt\}\rt),
+	\end{gather*}
+	as $n \to \infty$. Denote $\bs{L}_{ni}=\frac{2\bs{X}_{1}^{i\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}_{i}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}^{i}$,
+	then this is written as
+	\begin{gather*}
+	\sqrt{n}\lt(\frac{1}{n}\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}\rt)\overset{d}{\to}N\lt(0,V\lt(\bs{L}_{n1}\rt)\rt).
+	\end{gather*}
+	Then, we have
+	\begin{gather*}
+	\frac{1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}}{[V(\bs{L}_{n1})/n]^{1/2}}\frac{[V(\bs{L}_{n1})/n]^{1/2}}{\lt[AV(\bs{L}_{n1})/n\rt]^{1/2}}\overset{d}{\to}N(0,1).
+	\end{gather*}
+	As  $n \to \infty$, 
+	\begin{gather*}
+	\frac{V(\bs{L}_{n1})^{1/2}}{AV(\bs{L}_{n1})^{1/2}}\to1,
+	\end{gather*}
+	then we have
+	\begin{gather*}
+	\frac{1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}}{[AV(\bs{L}_{n1})/n]^{1/2}}\overset{d}{\to}N(0,1),
+	\end{gather*}
+	i.e.,
+	\begin{gather*}
+	\sqrt{n}\lt[1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}\rt]\overset{d}{\to}N\lt(0,AV(\bs{L}_{n1})\rt).
+	\end{gather*}
+	As $\frac{1}{n}\sum_{i=1}^{n}\bs{L}_{ni} = \frac{1}{n}\sum_{i=1}^n\frac{2\bs{X}_{1}^{i\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\rt)\bs{X}^{i} =\nabla\widehat{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt)$, we have
+	\begin{gather}
+	\begin{flalign*}
+	\sqrt{n}\lt[\nabla\widehat{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt) -\mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}\rt\}\rt]\overset{d}{\to}N\lt(0,AV\lt\{\frac{2\bs{X}_1^{\intercal}\bs{\beta}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}}{h}\rt)\bs{X}\rt\}\rt).
+	\end{flalign*}
+	\end{gather}
+\end{proof}
+\section{Proof of Corollary 1.1.4}
+\begin{corollary}
+	Suppose all the assumptions in lemma 3 hold. Also, $\wh{\bs{\theta}}_{\nu}\lt(\mu\rt)$ and $\widehat{\bs{\beta}}_{j}$ are consistent estimators of $\bs{\theta}^*_{\nu}\lt(\mu\rt)$ and $\bs{\beta}_{j}^*$, respectively. Then, 
+	\begin{gather}
+	\begin{flalign*}
+	\sqrt{n}\lt(\nabla\wh{V}_j\lt(\bs{\theta}^*_{\nu}\lt(\mu\rt)  , \wh{\bs{\beta}}_j\rt) - \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}^*_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*_{\nu}\lt(\mu\rt)}{h}\rt)\bs{X}\rt\}\rt)\overset{d}{\to}N\lt(0,AV\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_j}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*_{\nu}\lt(\mu\rt)}{h}\rt)\bs{X}\rt\}\rt).
+	\end{flalign*}
+	\end{gather}
+\end{corollary}
+\begin{proof} For notation simplicity, again let $\bs{\theta}^* = \bs{\theta}^*_{\nu}(\mu)$ and $\wh{\bs{\theta}} = \wh{\bs{\theta}}_{\nu}(\mu)$ here.
+Write
+\begin{gather*}
+\begin{flalign*}
+ & \nabla\wh{V}_j\lt(\bs{\theta}^* , \wh{\bs{\beta}}_j\rt) - \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}^*_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\} \\
+=  & \lt( \nabla\wh{V}_j\lt(\bs{\theta}^* , \wh{\bs{\beta}}_j\rt) - \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\wh{\bs{\beta}}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\} \rt) + \\ & \lt( \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\wh{\bs{\beta}}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\} - \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}^*_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\} \rt) \\
+=  & \nabla\wh{V}_j\lt(\bs{\theta}^* , \wh{\bs{\beta}}_j\rt) - \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\wh{\bs{\beta}}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}  + o_p(1)
+\end{flalign*}
+\end{gather*}
+For the second equality, as $\wh{\bs{\beta}}_j$is consistent, $\mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\wh{\bs{\beta}}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}$\\ $- \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}^*_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\} = o_p(1)$ which can be proven by Taylor expansions. Let $\bs{\theta} = \bs{\theta}^*$ and $\bs{\beta}_{j} = \wh{\bs{\beta}}_{j}$ in lemma 1.1.3, and then
+\begin{gather}
+\begin{flalign*}
+\sqrt{n}\lt(\nabla\wh{V}_j\lt(\bs{\theta}^* , \wh{\bs{\beta}}_j\rt) - \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\wh{\bs{\beta}}_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}\rt)\overset{d}{\to}N\lt(0,AV\lt\{\frac{2\bs{X}_1^{\itl}\wh{\bs{\beta}}_j}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}\rt)
+\end{flalign*}
+\end{gather}
+As $\widehat{\bs{\beta}}_{j}$ are consistent estimators,
+\begin{gather*}
+\frac{AV\lt\{\frac{2\bs{X}_1^{\itl}\widehat{\bs{\beta}}_{j}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}}{AV\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{j}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}} \overset{p}{\to} 1.
+\end{gather*}
+Together, it is proven that
+	\begin{gather}
+\begin{flalign*}
+\sqrt{n}\lt(\nabla\wh{V}_j\lt(\bs{\theta}^* , \wh{\bs{\beta}}_j\rt) - \mathbb{E}\lt\{\frac{2\bs{X}_{1}^{\intercal}\bs{\beta}^*_j}{h}k\lt(-\frac{\bs{X}^{\intercal}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}\rt)\overset{d}{\to}N\lt(0,AV\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_j}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}\rt)
+\end{flalign*}
+\end{gather}
+\end{proof}		
+
+\section{Proof of Theorem 1.1.5}
+\begin{theorem}
+	Suppose all the assumptions in Lemma 1.1.3 and Corollary 1.1.4 hold. Then we have, as $n\to \infty$
+	\begin{flalign*}
+	\sqrt{n}\lt(\widehat{\bs{\theta}}_{\nu}(\mu) - \bs{\theta}_{\bs{\nu}}(\mu^*)\rt) \overset{d}{\to} N\lt(\bs{0}, \bs{\Sigma}^* \rt),
+	\end{flalign*}
+	where $\bs{\Sigma}^* = \bs{D}^{*-1}\bs{C}^{*}\bs{D}^{*-1}$, 
+	
+	\begin{flalign*}
+	\sqrt{n}\lt(\widehat{\bs{\theta}}_{\nu}(\mu) - \bs{\theta}^*_{\bs{\nu}}(\mu)\rt) \overset{d}{\to} N\lt(\bs{0}, \bs{\Sigma}^* \rt),
+	\end{flalign*}
+	where $\bs{\Sigma}^* = \bs{D}^{*-1}\bs{C}^{*}\bs{D}^{*-1}$, \\
+	$\bs{C}^* =\mathbb{E}\lt\{  \nabla v_1\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt)\nabla v^{\itl}_1\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt) \rt\} - \mathbb{E}\lt\{\nabla v_1\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt)\rt\} \mathbb{E}\lt\{\nabla v^{\itl}_1\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt)\rt\}$, and $\bs{D}^*  =  \nabla^2 \phi(\bs{\theta}^*_{\bs{\nu}}(\mu))$.
+\end{theorem}
+
+\subsection{Related Limits}
+Here, we exposit the terms that are involved in deriving the limiting distribution of $\widehat{\bs{\theta}}_{\nu}\lt(\mu\rt)$. 
+
+\subsubsection{$V_j(\bs{\theta})$ and $\wh{V}_j(\bs{\theta})$}
+Recall $V_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt) = \mb{E}\lt\{\bs{X}^{\itl}_0\bs{\alpha}_j + \tsgn\lt(\bs{X}^{\itl}\bs{\theta}\rt)\bs{X}_1^{\itl}\bs{\beta}_j \rt\}$ \\$ = m_{\bs{\alpha}_j}+ \iint \tsgn\lt(z_1\rt)z_2 f_{\bs{\beta}_j}\lt(z_1, z_2; \bs{\theta}\rt) \,dz_1 \,dz_2$, and\\
+$\wh{V}_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt)=  \frac{1}{n}\sum_{i=1}^n \lt( \bs{X}_0^{i \itl}\bs{\alpha}_j +\bs{X}_{1}^{i\intercal}\bs{\beta}_{j}\lt\{ 1-2K\left(-\frac{\bs{X}^{i\intercal}\bs{\theta}}{h}\right)\rt\}\rt)$. As stated before, due the the consistency of and the KDEs, we have $p\lim_{n\to\infty}\wh{V}_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt)=  V_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt)$, where $p\lim$ means converging in probability. As $\wh{\bs{\alpha}}_j$ and $\wh{\bs{\beta}}_j$ are consistent estimators of $\bs{\alpha}^*_j$ and $\bs{\beta}^*_j$, we have  $p\lim_{n\to\infty}\wh{V}_j\lt(\bs{\theta}, \wh{\bs{\alpha}}_j, \wh{\bs{\beta}}_j\rt)=  V_j\lt(\bs{\theta}, \bs{\alpha}^*_j, \bs{\beta}^*_j\rt)$. As  $\wh{V}_j\lt(\bs{\theta}, \wh{\bs{\alpha}}_j, \wh{\bs{\beta}}_j\rt)$ is denoted by $\wh{V}_j\lt(\bs{\theta}\rt)$ and $V_j\lt(\bs{\theta}, \bs{\alpha}^*_j, \bs{\beta}^*_j\rt)$ is denoted by $V_j\lt(\bs{\theta}\rt)$, we have 
+\begin{flalign}
+p\lim_{n\to\infty}\wh{V}_j\lt(\bs{\theta}\rt)=  V_j\lt(\bs{\theta}\rt)
+\end{flalign}
+
+\subsubsection{$\nabla V_j(\bs{\theta})$ and $\nabla\wh{V}_j(\bs{\theta})$}
+The gradient of the value function with respect to $\bs{\theta}$ is \\
+$\nabla V_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt) = \frac{\partial}{\partial \bs{\theta}} \mb{E}\lt\{ \tsgn\lt(\bs{X}^{\itl}\bs{\theta}\rt)\bs{X}_1^{\itl}\bs{\beta}_j \rt\} =\frac{\partial}{\partial \bs{\theta}} \iint \tsgn\lt(z_1\rt)z_2 f_{\bs{\beta}_j}\lt(z_1, z_2; \bs{\theta}\rt) \,dz_1 \,dz_2$.
+The interchangeability between integral and differentiation is assumed to hold. Then, we can write $\nabla V_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt)
+ =\frac{\partial}{\partial \bs{\theta}} \mb{E}\lt\{ \tsgn\lt(\bs{X}^{\itl}\bs{\theta}\rt)\bs{X}_1^{\itl}\bs{\beta}_j \rt\} 
+=  \int_{\bs{\ml{X}}}\lt\{\frac{\partial}{\partial \bs{\theta}} \tsgn\lt( \bs{x}^{\itl}\bs{\theta}\rt)\bs{x}^{\itl}\bs{\beta}_j\rt\}f(\bs{x})\,d\bs{x}
+= \int_{\bs{\ml{X}}} 2\delta\lt( \bs{x}^{\itl}\bs{\theta} \rt)\bs{x}^{\itl}\bs{\beta}_j f(\bs{x})\,d\bs{x}
+= \mb{E}\lt\{ 2\delta\lt( \bs{x}^{\itl}\bs{\theta} \rt)\bs{x}^{\itl}\bs{\beta}_j\rt\},$ 
+where $\delta(x) = \frac{\partial}{\partial \bs{\theta}}\tsgn(x)$ is the Dirac delta function.
+Our kernel $k(x)$ is the Gaussian Kernel, where $k(x) = \sfrac{1}{\sqrt{2\pi}} \exp\lt( - \sfrac{x^2}{2}\rt)$. Then, $\frac{1}{h}k\lt(\frac{x}{h}\rt) = \frac{1}{h\sqrt{2\pi}} \exp\lt( - \frac{x^2}{2h^2}\rt)$. It is defined the Dirac delta function $\delta(x)$ to be the limit (in the sense of distributions) of the sequence of zero-centered normal distributions, i.e., $\delta(x) = \underset{h \to 0}{\lim}\sfrac{1}{h\sqrt{2\pi}} \exp\lt(-\sfrac{x^2}{2h^2}\rt) = \lim_{h \to 0}\sfrac{1}{h}k\lt(\sfrac{x}{h}\rt)$. It is an even distribution, such that $\delta(x) = \delta(-x)$.Moreover, $\nabla\wh{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt)=  \sfrac{1}{n}\sum_{i=1}^{n}\sfrac{2\bs{X}_{1}^{i\itl}\bs{\beta}_{j}}{h}k\lt(-\sfrac{\bs{X}^{i\itl}\bs{\theta}}{h}\rt)\bs{X}^{i}$. Its expectation is $\mb{E}\lt\{ \nabla\wh{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt) \rt\}=  \mb{E}\lt\{ \sfrac{2\bs{X}_{1}^{\itl}\bs{\beta}_{j}}{h}k\lt(-\sfrac{\bs{X}^{\itl}\bs{\theta}}{h}\rt)\bs{X}\rt\} = \mb{E}\lt\{2\bs{X}_{1}^{\itl}\bs{\beta}_{j}\cdot\delta\lt(\bs{X}^{\itl}\bs{\theta}\rt)\rt\}.$ This is because, as $n\to \infty$, $h \to 0$  and $nh \to \infty$, we have $\lim_{n \to \infty} \sfrac{2\bs{x}_1^{\itl}\bs{\beta}_{j}}{h}k\lt(-\sfrac{\bs{x}^{\itl}\bs{\theta}}{h}\rt) = 2\bs{x}_{1}^{\itl}\bs{\beta}_{j}\cdot\delta\lt(-\bs{x}^{\itl}\bs{\theta}\rt)= 2\bs{x}_{1}^{\itl}\bs{\beta}_{j}\cdot\delta\lt(\bs{x}^{\itl}\bs{\theta}\rt)$. Thus, by weak law of large numbers, $p\lim_{n\to\infty}\nabla\wh{V}_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt)$ \\$=\nabla V_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt)$. Together, with the consistency of $\wh{\bs{\alpha}}_j$ and $\wh{\bs{\beta}}_j$, we have \\$p\lim_{n\to\infty}\nabla\wh{V}_j\lt(\bs{\theta},\wh{\bs{\alpha}}_j, \wh{\bs{\beta}}_j\rt)=  \nabla V_j\lt(\bs{\theta}, \bs{\alpha}^*_j, \bs{\beta}^*_j\rt)$. Using the simplified notation, that is 
+\begin{flalign}
+p\lim_{n\to\infty}\nabla\wh{V}_j\lt(\bs{\theta}\rt)=  \nabla V_j\lt(\bs{\theta}\rt)
+\end{flalign}
+
+\subsubsection{$\nabla^2 V_j(\bs{\theta})$ and $\nabla^2\wh{V}_j(\bs{\theta})$}
+The second order derivative of value function, or Hessian, is\\
+ $\nabla^2 V_j\lt(\bs{\theta}, \bs{\alpha}_j, \bs{\beta}_j\rt) = \nabla^2\mb{E}\lt\{ \tsgn\lt(\bs{X}^{\itl}\bs{\theta}\rt)\bs{X}_1^{\itl}\bs{\beta}_j \rt\} =\frac{\partial^2}{\partial \bs{\theta}\partial \bs{\theta}^{\itl}} \iint \tsgn\lt(z_1\rt)z_2 f_{\bs{\beta}_j}\lt(z_1, z_2; \bs{\theta}\rt) \,dz_1 \,dz_2$. Again, the interchangeability between integral and differentiation is assumed to hold.
+ $\nabla^2\mathbb{E}\{ \text{sgn}(\bs{X}^{\itl}\bs{\theta})\bs{X}_1^{\itl}\bs{\beta}_{j}\}
+=  \int_{\bs{\ml{X}}}\lt\{\frac{\partial^2}{\partial\bs{\theta}\partial\bs{\theta}^{\itl}}\tsgn\lt(\bs{x}^{\itl}\bs{\theta}\rt)\bs{x}_1^{\itl}\bs{\beta}_{j}\rt\}f\lt(\bs{x}\rt)\,d\bs{x}\\
+= \int_{\bs{\ml{X}}}2\bs{x}_1^{\itl}\bs{\beta}_{j}\delta^{\prime}\lt(\bs{x}^{\itl}\bs{\theta}\rt)\bs{x}\bs{x}^{\itl}f(\bs{x})\,d\bs{x}
+= \mathbb{E}\lt\{ 2\bs{X}_1^{\itl}\bs{\beta}_{j}\delta^{\prime}\lt(\bs{X}^{\itl}\bs{\theta}\rt)\bs{X}\bs{X}^{\itl}\rt\}$, where $\delta^{\prime}(x)$ is the distributional derivative of the Dirac function.  $\delta^{\prime}(x) = \lim_{h\to0} \sfrac{1}{h^2}k^{\prime}\lt(\frac{x}{h}\rt)$\\$ =  \lim_{h \to 0}  \sfrac{-x}{h^3\sqrt{2\pi}} \exp\lt( - \sfrac{x^2}{2h^2}\rt)$. Moreover, \\$ \nabla^2\wh{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt) 
+=\sfrac{1}{n}\sum_{i=1}^n\lt\{-\sfrac{2\bs{X}_{1}^{i\itl}\bs{\beta}_{j}}{h^2}k^{\prime}\lt(-\sfrac{\bs{X}^{i\itl}\bs{\theta}}{h}\rt)\bs{X}^i\bs{X}^{i\itl}\rt\}$. Its expectation is\\
+ $\mb{E}\lt\{ \nabla^2\wh{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt) \rt\}
+=\mb{E}\lt\{-\sfrac{2\bs{X}_{1}^{\itl}\bs{\beta}_{j}}{h^2}k^{\prime}\lt(-\sfrac{\bs{X}^{\itl}\bs{\theta}}{h}\rt)\bs{X}\bs{X}^{\itl}\rt\}=\mathbb{E}\lt\{ 2\bs{X}_1^{\itl}\bs{\beta}_{j}\delta^{\prime}\lt(\bs{X}^{\itl}\bs{\theta}\rt)\bs{X}\bs{X}^{\itl}\rt\}.$ Thus, by weak law of large numbers, $p\lim_{n \to \infty}\nabla^2\wh{V}_j\lt(\bs{\theta}, \bs{\beta}_j\rt)= \nabla^2V_j\lt(\bs{\theta}, \bs{\beta}_j\rt)$. Together, with the consistency of $\wh{\bs{\beta}}_j$, $p\lim_{n \to \infty}\nabla^2\wh{V}_j\lt(\bs{\theta}, \wh{\bs{\beta}}_j\rt) =  \nabla^2V_j\lt(\bs{\theta}, \bs{\beta}^*_j\rt)$. Using simplified notation, we have 
+ \begin{flalign}
+ p\lim_{n \to \infty}\nabla^2\wh{V}_j\lt(\bs{\theta}\rt) =  \nabla^2V_j\lt(\bs{\theta}\rt)
+ \end{flalign}
+
+\subsection{Proof}
+%\subsection{Limiting distribution of $\widehat{\bs{\tau}}_{\kappa,\mu}$}
+We derive the limiting distribution of $\widehat{\bs{\theta}}_{\nu}(\mu)$, and prove Theorem 1.1.5.
+\begin{proof} For notation simplicity in this proof, let $\phi\lt(\bs{\theta}\rt) = \phi^{PB}_{\mu}\lt(\bs{\theta}\rt)$ and $\wh{\phi}(\bs{\theta}) = \wh{\phi}^{PB}_{\mu}\lt(\bs{\theta}\rt)$ for this proof. Also, let $\bs{\theta}^* = \bs{\theta}^*_{\nu}(\mu)$ and $\wh{\bs{\theta}} = \wh{\bs{\theta}}_{\nu}(\mu)$ here.
+Recall $\wh{\phi}\lt(\bs{\theta}\rt) = \,\,\wh{v}_1(\bs{\theta}) - \mu \sum_{j=2}^J \ln \wh{v}_j\lt( \bs{\theta}\rt) + \sfrac{1}{2\mu} \lt(\bs{\theta}^{\itl}\bs{\theta} - 1\rt)^2$.  As  $\bs{\theta}^{\itl}\bs{\theta}-1=0$ is always satisfied as a constraint, the gradient is $\nabla\wh{\phi}\lt(\bs{\theta}\rt) = \,\,\nabla\wh{v}_1(\bs{\theta}) - \mu \sum_{j=2}^J \sfrac{\nabla\wh{v}_j\lt( \bs{\theta}\rt)}{\wh{v}_j\lt( \bs{\theta}\rt)}$. Taylor expansion of $\nabla\wh{\phi}\lt(\bs{\theta}^*\rt)$ at $\bs{\theta} = \widehat{\bs{\theta}}$ shows that
+	\begin{flalign*}
+	\nabla\wh{\phi}\lt(\bs{\theta}^*\rt) =  \nabla\wh{\phi}(\wh{\bs{\theta}})- \nabla^2\wh{\phi}(\tilde{\bs{\theta}}) (\widehat{\bs{\theta}} - \bs{\theta}^{*}) + o_p(1),
+	\end{flalign*}
+	where $\tilde{\bs{\theta}}$ is between $\wh{\bs{\theta}}$ and $\bs{\theta}^*$. As $\widehat{\bs{\theta}}$ is the maximizer of $\widehat{\phi}\lt(\bs{\theta}\rt)$, it satisfies the first order condition that $\nabla \wh{\phi}(\widehat{\bs{\theta}}) = 0$. Therefore, 
+	\begin{flalign}
+	\sqrt{n}\nabla\wh{\phi}\lt(\bs{\theta}^*\rt) =   - \sqrt{n} \nabla^2\wh{\phi}( \tilde{\bs{\theta}}) (\widehat{\bs{\theta}} - \bs{\theta}^{*}),
+	\end{flalign}
+ where $\nabla\wh{\phi}\lt(\bs{\theta}\rt) = \,\,\nabla\wh{v}_1(\bs{\theta}) - \mu \sum_{j=2}^J \sfrac{\nabla\wh{v}_j\lt( \bs{\theta}\rt)}{\wh{v}_j\lt( \bs{\theta}\rt)}$.
+ Recall $v_1\lt(\bs{\theta}\rt)=- V_1\lt(\bs{\theta}\rt)$ and  $v_j\lt(\bs{\theta}\rt) = V_j\lt(\bs{\theta}\rt) - \nu_j$, for $j = 2, \cdots, J$.  Due to Corollary 1.1.4, together with (A.4) and (A.5),
+\begin{flalign}
+\sqrt{n}\bigg(\nabla\wh{v}_1(\bs{\theta}^*) - \nabla v_1(\bs{\theta}^*)\bigg)\overset{d}{\to}N\lt( 0, \bs{C}^*\rt),
+\end{flalign}
+
+where $\bs{C}^*=AV\bigg(\nabla v_1(\bs{\theta}^*)\bigg) = AV\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_1}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}$. That is,
+ \begin{gather*}
+\begin{flalign*}
+\bs{C}^* \triangleq =&AV\bigg(\nabla v_1(\bs{\theta}^*)\bigg)=
+AV\lt[\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X} \rt] = p\lim_{n \to \infty} V\lt[\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X} \rt] \\
+= & p\underset{n \to \infty}\lim \lt[ \mathbb{E} \lt\{ \frac{4\bs{\beta}^{*\itl}_{1}\bs{X}_1\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h^2}k^2\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\bs{X}^{\itl}\rt\} -  \mathbb{E}\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\} \mathbb{E}\lt\{\frac{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}}{h}k\lt(-\frac{\bs{X}^{\itl}\bs{\theta}^*}{h}\rt)\bs{X}\rt\}^{\itl} \rt] \\
+= & \mathbb{E}\lt\{  4\big(\bs{X}_1^{\itl}\bs{\beta}^*_{1}\delta\lt(\bs{X}^{\itl}\bs{\theta}^*\rt)\big)^2\bs{X}\bs{X}^{\itl} \rt\} - \mathbb{E}\lt\{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}\delta\lt(\bs{X}^{\itl}\bs{\theta}^*\rt)\bs{X}\rt\} \mathbb{E}\lt\{2\bs{X}_1^{\itl}\bs{\beta}^*_{1}\delta\lt(\bs{X}^{\itl}\bs{\theta}^*\rt)\bs{X}\rt\}^{\itl}\\
+=& \mathbb{E}\lt\{  \nabla v_1(\bs{\theta}^*)\nabla^{\itl} v_1(\bs{\theta}^*) \rt\} - \mathbb{E}\lt\{\nabla v_1(\bs{\theta}^*)\rt\} \mathbb{E}\lt\{\nabla^{\itl} v_1(\bs{\theta}^*)\rt\}.
+\end{flalign*}
+\end{gather*}
+Then, due to (A.4) and (A.5), we have
+\begin{flalign}
+\sum_{j=2}^J \frac{\nabla\wh{v}_j\lt( \bs{\theta}\rt)}{\wh{v}_j\lt( \bs{\theta}\rt)} -  \sum_{i=2}^{J}\frac{\nabla v_j(\bs{\theta})}{v_j(\bs{\theta})} = o_p(1).
+\end{flalign}
+Note $v_j(\bs{\theta}) > 0$, for $j =2, \cdots, J$, is implied by the log barrier operator. Put (A.8) and (A.9) together by Slutsky's theorem, we have
+\begin{flalign*}
+\sqrt{n}\lt\{\lt(\nabla\wh{v}_1(\bs{\theta}^*) - \mu \sum_{j=2}^J \frac{\nabla\wh{v}_j\lt( \bs{\theta}^*\rt)}{\wh{v}_j( \bs{\theta}^*)}\rt) - \lt(\nabla v_1(\bs{\theta}^*) - \mu \sum_{i=2}^{J}\frac{\nabla v_j(\bs{\theta}^*)}{v_j(\bs{\theta}^*)}\rt)\rt\}\overset{d}{\to}N\lt(0, \bs{C}^*\rt),
+\end{flalign*} 
+Due to the stationarity of $\bs{\theta}^*$, $\nabla \phi(\bs{\theta}^*)=\nabla v_1(\bs{\theta}^*) - \mu \sum_{i=2}^{J}\sfrac{\nabla v_j(\bs{\theta}^*)}{v_j(\bs{\theta}^*)} =0$. Together with Sluskty's theorem, we have 
+\begin{flalign*}
+\sqrt{n} \nabla\wh{\phi}( \bs{\theta}^*) \overset{d}{\to} N\lt(0, \bs{C}^*\rt),
+\end{flalign*}
+where 
+$\bs{C}^* =\mathbb{E}\lt\{  \nabla v_1(\bs{\theta}^*)\nabla^{\itl} v_1(\bs{\theta}^*) \rt\} - \mathbb{E}\lt\{\nabla v_1(\bs{\theta}^*)\rt\} \mathbb{E}\lt\{\nabla^{\itl} v_1(\bs{\theta}^*)\rt\}.$ \\
+
+As $	\sqrt{n}\nabla\wh{\phi}\lt(\bs{\theta}^*\rt) =  - \sqrt{n} \nabla^2\wh{\phi}( \tilde{\bs{\theta}}) (\widehat{\bs{\theta}} - \bs{\theta}^{*})$ stated in (A.7),we have
+\begin{flalign}
+\sqrt{n} \nabla^2\wh{\phi}( \tilde{\bs{\theta}}) (\widehat{\bs{\theta}} - \bs{\theta}^{*}) \overset{d}{\to} N(0, \bs{C}^*)
+\end{flalign} 	
+The Hessian is $\nabla^2\wh{\phi}\lt(\bs{\theta}\rt) = \,\,\nabla^2\wh{v}_1(\bs{\theta}) - \mu \sum_{j=2}^J \sfrac{\big(\nabla^2\wh{v}_j\lt( \bs{\theta}\rt)\wh{v}_j\lt( \bs{\theta}\rt)- \lt(\nabla\wh{v}_j\lt( \bs{\theta}\rt)\rt)^2\big)}{\wh{v}^2_j\lt( \bs{\theta}\rt)}$. Based on (A.4) and (A.5), we have
+\begin{gather}
+\begin{flalign}
+\bs{D}^* \triangleq & p\lim_{n \to \infty}\nabla^2\wh{\phi}\lt(\bs{\theta}^*\rt) =  \nabla^2 \phi(\bs{\theta}^*)
+ =\nabla^2{v}_1(\bs{\theta}^*) - \mu \sum_{j=2}^J \frac{\nabla^2{v}_j\lt( \bs{\theta}^*\rt)v_j\lt( \bs{\theta}^*\rt)- \lt\{\nabla v_j\lt( \bs{\theta}^*\rt)\rt\}^2}{v^2_j\lt( \bs{\theta}^*\rt)}.
+\end{flalign}
+ \end{gather}
+
+As $\tilde{\bs{\theta}}$ is a vector in-between $\bs{\theta}^*$ and $\wh{\bs{\theta}}$, we have $\nabla^2\wh{\phi}(\tilde{\bs{\theta}}) = \nabla^2\wh{\phi}(\bs{\theta}^*) + o_p(1)$. Therefore, based on (A.10) and (A.11), we have 
+\begin{flalign*}
+\sqrt{n}\lt(\widehat{\bs{\theta}} - \bs{\theta}^*\rt) \overset{d}{\to} N\lt(\bs{0}, \bs{\Sigma}^* \rt),
+\end{flalign*}
+where $\bs{\Sigma}^* = \bs{D}^{*-1}\bs{C}^{*}\bs{D}^{*-1}$, 
+$\bs{C}^* =\mathbb{E}\lt\{  \nabla v_1(\bs{\theta}^*)\nabla^{\itl} v_1(\bs{\theta}^*) \rt\} - \mathbb{E}\nabla v_1(\bs{\theta}^*) \mathbb{E}\nabla^{\itl} v_1(\bs{\theta}^*)$ and $\bs{D}^*  =  \nabla^2 \phi(\bs{\theta}^*)$.
+\end{proof}
+%\begin{section}{Proof of Theorem 1.1.6}
+%	\begin{theorem}
+%		Suppose all the assumptions in Theorem 1.1.5 hold, then $$\wh{V}_j(\wh{\bs{\theta}}_{\bs{\nu}}(\mu)) - V_j(\bs{\theta}_{\bs{\nu}}^*(\mu))\overset{d}{\to} N\lt\{0, \nabla^{\itl} V_j\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt) \bs{\Sigma}^*\nabla V_j\lt(\bs{\theta}^*_{\bs{\nu}}(\mu)\rt)\rt\}.$$
+%	\end{theorem}
+%	\begin{proof}
+%Again, for notation simplicity, let $\bs{\theta}^* = \bs{\theta}^*_{\bs{\nu}}(\mu)$ and $\wh{\bs{\theta}} = \wh{\bs{\theta}}_{\bs{\nu}}(\mu)$ for this proof. We write
+%	\begin{flalign*}
+%	 & \wh{V}_j(\wh{\bs{\theta}}) - V_j(\bs{\theta}^*) \\
+%  = & \,\wh{V}_j(\wh{\bs{\theta}}) - \wh{V}_j(\bs{\theta}^*) + \wh{V}_j(\bs{\theta}^*) - V_j(\bs{\theta}^*) \\
+%  = & \,\wh{V}_j(\wh{\bs{\theta}}) - \wh{V}_j(\bs{\theta}^*)  + o_p(1) \,\,\, \text{by (A.4)} \\
+% = & \nabla \wh{V}_j(\tilde{\bs{\theta}}) ( \wh{\bs{\theta}} - \bs{\theta}^*) + o_p(1) \,\,\, \text{by Taylor expansion} \\
+% = & \nabla V_j(\bs{\theta}^*) ( \wh{\bs{\theta}} - \bs{\theta}^*) + o_p(1) 
+%\end{flalign*}
+%For last equality, by (A.5), $\nabla \wh{V}_j(\tilde{\bs{\theta}}) \overset{p}{\to} \nabla V_j(\tilde{\bs{\theta}})$; as $\tilde{\bs{\theta}}$ is in-between $\wh{\bs{\theta}}$ and $\bs{\theta}^*$ and $\wh{\bs{\theta}} - \bs{\theta}^* = o_p(1)$, $\nabla \wh{V}_j(\tilde{\bs{\theta}}) \overset{p}{\to} \nabla V_j(\bs{\theta}^*)$. By Theorem 1.1.5, $\sqrt{n}(\wh{\bs{\theta}} - \bs{\theta}^*) \overset{d}{\to} N(0, \bs{\Sigma}^*)$. Thus, $\nabla V_j(\bs{\theta}^*) ( \wh{\bs{\theta}} - \bs{\theta}^*)\overset{d}{\to} N(0, \nabla^{\itl} V_j(\bs{\theta}^*) \bs{\Sigma}^*\nabla V_j(\bs{\theta}^*) )$.
+%	\end{proof}
+%
+%	\end{section}
+\section{Details on simulation }
+\subsection{Parameters}
+	To find parameter values in the generative model that satisfy the levels of these two factors, we use the solver \texttt{fmincon} in Matlab to minimize the sum of two empirical quadratic loss functions for $\Omega_1$ and $\Omega_2$ and find a set of possible solution. \\
+	\subsection{Details about simulation studies with kernel density estimation}
+%	For each setting, the simulation followed the steps below.
+%	\begin{enumerate} 
+%		\item The training dataset $\{(H_{i}, A_{i}, Y_{i}, Z_{i})\}^{n}_{i=1}$ is generated according to the generative model above using each set of the parameters in Table 2.
+%		\item We to estimate the parameters, $\bs{\alpha}^*_1$, $\bs{\beta}^*_1$, $\beta^{*}_{0Z}$ and $\beta^{*}_{1Z}$ using least-squares based on the training dataset and denote the estimators $\hat{\beta}_{0Y}$, $\hat{\beta}_{1Y}$, $\hat{\beta}_{0Z}$ and $\hat{\beta}_{1Z}$.
+%		\item For any $\tau : \|\tau\|=1$, the density of $(H^{\itl}\beta_{1Y}^{*}, H^{\itl}\tau)$ is estimated using a bivariate kernel density estimator with data points $(H^{\itl}\hat{\beta}_{1Y}, H^{\itl}\tau)$ from the training dataset. Then, we use the sample mean from the estimated density to approximate $E \{sgn(\bs{X}^{\itl}\tau) H_{1}^{\itl}\bs{\beta}^*_1 \}$. A similar approach is used to estimate $E \{sgn(\bs{X}^{\itl}\tau) H^{\itl}\beta^{*}_{1Z} \}$. $E\{H^{\itl}_{0}\beta^{*}_{0Z}\}$ is approximated by $\hat{E}(H^{\itl}_{0}\hat{\beta}_{0Z}) =n^{-1}\sum_{i=1}^{n} \bs{X}^{\itl}_{0i}\hat{\beta}_{0Z}$, where n is the sample size of the training data. 
+%		\item For a sequence of upper bounds
+%		on $E \{Z^{*}(\pi)\}$, $\kappa_{j}$, $j = 1, . . . , J$, we solve the constrained optimization problem formed in step 3 using the log barrier or exact penalty method and get the estimates $\hat{\tau}_{n,\kappa}$. 
+%		\item A testing dataset is generated from the same model. We apply the estimated constrained optimal regime $\hat{\pi}_{opt,\kappa}$ to the test dataset and calculate $\hat{E}\{Y^{*}(\hat{\pi}_{opt,\kappa})\} = m^{-1}{\sum_{i=1}^{m} Y^{*}_{i}\{\hat{\pi}_{opt,\kappa}(h_i)\}}$, the sample means of Y under the estimated optimal constrained regime, where $m$ is the sample size of the test dataset. Then, we plot $\hat{E}\{Y^{*}(\hat{\pi}_{opt,\kappa})\}$ v.s. $\kappa$,
+%		along with a $95\%$ point-wise confidence interval.
+%	\end{enumerate}
+%	
+%	In our simulations, the training dataset sample size $n$ is chosen to be 1,000 and the test dataset sample size $m$ is set to be 1,000 as well. The number of Monte Carlo replicates is 200. A Matlab nonlinear optimization solver, fminsearch, is used to solve the functions for both log barrier and exact penalty functions. Fimsearch uses the simplex search method of Lagarias et al~\cite{JeffreyC.Lagarias}. It can often handle discontinuity, particularly if it does not occur near the solution, but is only guaranteed to find local optimum~\cite{JeffreyC.Lagarias, MATLAB}. For the log barrier method, we follow the suggestion by Linn et al.~\cite{Linn2014} and set a sequence of decreasing $\lambda_{1} > \lambda_{2} > ... > \lambda_{K}$ with $\lambda_{j} = \lambda_{j-1}/4$.  The solution for $\tau$ at $\lambda_{j-1}$ is used as the starting value for $\tau$ at $\lambda_j$. We choose $\lambda_1$ so that $$\hat{E}\{Y^{*}(\hat{\pi}_{Y, opt})\} - \hat{E}(Y) = \lambda_{1} log \big[ \kappa - \hat{E}\{Z^{*}(\hat{\pi}_{Z, opt})\} \big],$$
+%	By doing so, the log-penalty should have the same order of magnitude as the potential gain in the mean of Y over treatment randomization~\cite{Linn2014}. At $\lambda_1$ , the starting value for $\tau$ is $\hat{\tau}_{n,Z} = \underset{\tau: \| \tau\| =1}{\text{argmin }}\hat{E}_{H} {\lt\{H^{\itl}\hat{\beta}_{0Z} + sgn(\bs{X}^{\itl}\tau) H^{\itl}\hat{\beta}_{1Z} \rt\} }$, which is the estimated indexing parameter for the optimal regime in terms of $Z$. For exact penalty method, $\lambda$ is set to be 3000. We used 10 random starts used for solving the exact penalty function. Kernel Density Estimation Toolbox for MATLAB is used~\cite{matlabKDE}. The kernel is chosen to be the 2 dimensional Gaussian kernel. Silverman's rule of thumb is used to decide the bandwidth~\cite{nonparm}. In the plots, the means of Y under the true optimal constrained regimes $\hat{E}\{Y^{*}(\pi^{*}_{opt,\kappa})\}$ vs $\kappa$ are also included. Here, $\pi^{*}_{opt,\kappa}$ is obtained by solving the constrained optimization problem with true parameters $\bs{\beta}^*_1$, $\beta^{*}_{0Z}$ and $\beta^{*}_{1Z}$ in the functions using one set of training data with sample size 10,000. Both log barrier and exact penalty methods are carried out. $\hat{E}\{Y^{*}(\pi^{*}_{opt,\kappa})\} = m^{-1}{\sum_{i=1}^{m} Y^{*}_{i}\{\pi^{*}_{opt,\kappa}(h_i)\}}$  is obtained by applying the true constrained optimal regime to one set of testing data with sample size 10,000. 
+	\subsection{Simulation results}
+
+\begin{table}[!htbp]
+	\caption {Simulation Result for Setting 2}
+	\centering
+	{\tt
+		\input{./Chapter-1/figs/result_2.tex}
+	}
+	\justify
+	Here, $\nu$ denotes the values of the constraint; $\wh{V}_1(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of primary outcome of interest; $std(\wh{V}_1)$ denotes the standard deviation of the estimated regime values in terms of primary outcome of interest; $\wh{V}_2(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of secondary outcome of interest; $std(\wh{V}_2)$ denotes the standard deviation of the estimated regime values in terms of secondary outcome of interest; $\wh{\theta}_{\nu,1}$ and $\wh{\theta}_{\nu,2}$ denote the estimated index parameters of the regimes; $std(\wh{\theta}_{\nu,1})$ and $std(\wh{\theta}_{\nu,2})$ denote the standard deviations of those estimated index parameters.	
+\end{table} 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{./Chapter-1/figs/efficient_plot2.png}
+	\caption{Efficient frontier for estimated constrained optimal regimes for Setting 2.}
+	\label{fig:2}
+	\justify
+X-axis is for the values for the constraints $\nu$; Y-axis is for the values of estimated regimes. Red dashed line is for the values in terms of the primary outcome of interest. Blue dashed line is for the values in terms of the secondary outcome of interest.
+\end{figure}
+\begin{table}[!htbp]
+	\caption {Simulation Result for Setting 3}
+	\centering
+	{\tt
+		\input{./Chapter-1/figs/result_3.tex}
+	}
+	\justify
+	Here, $\nu$ denotes the values of the constraint; $\wh{V}_1(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of primary outcome of interest; $std(\wh{V}_1)$ denotes the standard deviation of the estimated regime values in terms of primary outcome of interest; $\wh{V}_2(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of secondary outcome of interest; $std(\wh{V}_2)$ denotes the standard deviation of the estimated regime values in terms of secondary outcome of interest; $\wh{\theta}_{\nu,1}$ and $\wh{\theta}_{\nu,2}$ denote the estimated index parameters of the regimes; $std(\wh{\theta}_{\nu,1})$ and $std(\wh{\theta}_{\nu,2})$ denote the standard deviations of those estimated index parameters.	
+\end{table} 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{./Chapter-1/figs/efficient_plot3.png}
+	\caption{Efficient frontier for estimated constrained optimal regimes for Setting 3.}
+	\label{fig:3}
+	\justify
+X-axis is for the values for the constraints $\nu$; Y-axis is for the values of estimated regimes. Red dashed line is for the values in terms of the primary outcome of interest. Blue dashed line is for the values in terms of the secondary outcome of interest.
+\end{figure}
+\begin{table}[!htbp]
+	\caption {Simulation Result for Setting 4}
+	\centering
+	{\tt
+		\input{./Chapter-1/figs//result_4.tex}
+	}
+	\justify
+	Here, $\nu$ denotes the values of the constraint; $\wh{V}_1(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of primary outcome of interest; $std(\wh{V}_1)$ denotes the standard deviation of the estimated regime values in terms of primary outcome of interest; $\wh{V}_2(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of secondary outcome of interest; $std(\wh{V}_2)$ denotes the standard deviation of the estimated regime values in terms of secondary outcome of interest; $\wh{\theta}_{\nu,1}$ and $\wh{\theta}_{\nu,2}$ denote the estimated index parameters of the regimes; $std(\wh{\theta}_{\nu,1})$ and $std(\wh{\theta}_{\nu,2})$ denote the standard deviations of those estimated index parameters.	
+\end{table} 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{./Chapter-1/figs/efficient_plot4.png}
+	\caption{Efficient frontier for estimated constrained optimal regimes for Setting 4.}
+	\label{fig:4}
+	\justify
+X-axis is for the values for the constraints $\nu$; Y-axis is for the values of estimated regimes. Red dashed line is for the values in terms of the primary outcome of interest. Blue dashed line is for the values in terms of the secondary outcome of interest.
+\end{figure}
+\begin{table}[!htbp]
+	\caption {Simulation Result for Setting 5}
+	\centering
+	{\tt
+		\input{./Chapter-1/figs/result_5.tex}
+	}
+	\justify
+	Here, $\nu$ denotes the values of the constraint; $\wh{V}_1(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of primary outcome of interest; $std(\wh{V}_1)$ denotes the standard deviation of the estimated regime values in terms of primary outcome of interest; $\wh{V}_2(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of secondary outcome of interest; $std(\wh{V}_2)$ denotes the standard deviation of the estimated regime values in terms of secondary outcome of interest; $\wh{\theta}_{\nu,1}$ and $\wh{\theta}_{\nu,2}$ denote the estimated index parameters of the regimes; $std(\wh{\theta}_{\nu,1})$ and $std(\wh{\theta}_{\nu,2})$ denote the standard deviations of those estimated index parameters.	
+\end{table} 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{./Chapter-1/figs/efficient_plot5.png}
+	\caption{Efficient frontier for estimated constrained optimal regimes for Setting 5.}
+	\label{fig:5}
+	\justify
+X-axis is for the values for the constraints $\nu$; Y-axis is for the values of estimated regimes. Red dashed line is for the values in terms of the primary outcome of interest. Blue dashed line is for the values in terms of the secondary outcome of interest.
+\end{figure}
+\begin{table}[!htbp]
+	\caption {Simulation Result for Setting 6}
+	\centering
+	{\tt
+		\input{./Chapter-1/figs/result_6.tex}
+	}
+	\justify
+	Here, $\nu$ denotes the values of the constraint; $\wh{V}_1(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of primary outcome of interest; $std(\wh{V}_1)$ denotes the standard deviation of the estimated regime values in terms of primary outcome of interest; $\wh{V}_2(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of secondary outcome of interest; $std(\wh{V}_2)$ denotes the standard deviation of the estimated regime values in terms of secondary outcome of interest; $\wh{\theta}_{\nu,1}$ and $\wh{\theta}_{\nu,2}$ denote the estimated index parameters of the regimes; $std(\wh{\theta}_{\nu,1})$ and $std(\wh{\theta}_{\nu,2})$ denote the standard deviations of those estimated index parameters.	
+\end{table} 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{./Chapter-1/figs/efficient_plot6.png}
+	\caption{Efficient frontier for estimated constrained optimal regimes for Setting 6.}
+	\label{fig:6}
+	\justify
+X-axis is for the values for the constraints $\nu$; Y-axis is for the values of estimated regimes. Red dashed line is for the values in terms of the primary outcome of interest. Blue dashed line is for the values in terms of the secondary outcome of interest.
+\end{figure}
+\begin{table}[!htbp]
+	\caption {Simulation Result for Setting 7}
+	\centering
+	{\tt
+		\input{./Chapter-1/figs/result_7.tex}
+	}
+	\justify
+	Here, $\nu$ denotes the values of the constraint; $\wh{V}_1(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of primary outcome of interest; $std(\wh{V}_1)$ denotes the standard deviation of the estimated regime values in terms of primary outcome of interest; $\wh{V}_2(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of secondary outcome of interest; $std(\wh{V}_2)$ denotes the standard deviation of the estimated regime values in terms of secondary outcome of interest; $\wh{\theta}_{\nu,1}$ and $\wh{\theta}_{\nu,2}$ denote the estimated index parameters of the regimes; $std(\wh{\theta}_{\nu,1})$ and $std(\wh{\theta}_{\nu,2})$ denote the standard deviations of those estimated index parameters.	
+\end{table} 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{./Chapter-1/figs/efficient_plot7.png}
+	\caption{Efficient frontier for estimated constrained optimal regimes for Setting 7.}
+	\label{fig:7}
+	\justify
+X-axis is for the values for the constraints $\nu$; Y-axis is for the values of estimated regimes. Red dashed line is for the values in terms of the primary outcome of interest. Blue dashed line is for the values in terms of the secondary outcome of interest.
+\end{figure}
+\begin{table}[!htbp]
+	\caption {Simulation Result for Setting 8}
+	\centering
+	{\tt
+		\input{./Chapter-1/figs/result_8.tex}
+	}
+	\justify
+	Here, $\nu$ denotes the values of the constraint; $\wh{V}_1(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of primary outcome of interest; $std(\wh{V}_1)$ denotes the standard deviation of the estimated regime values in terms of primary outcome of interest; $\wh{V}_2(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of secondary outcome of interest; $std(\wh{V}_2)$ denotes the standard deviation of the estimated regime values in terms of secondary outcome of interest; $\wh{\theta}_{\nu,1}$ and $\wh{\theta}_{\nu,2}$ denote the estimated index parameters of the regimes; $std(\wh{\theta}_{\nu,1})$ and $std(\wh{\theta}_{\nu,2})$ denote the standard deviations of those estimated index parameters.	
+\end{table} 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{./Chapter-1/figs/efficient_plot8.png}
+	\caption{Efficient frontier for estimated constrained optimal regimes for Setting 8.}
+	\label{fig:8}
+	\justify
+X-axis is for the values for the constraints $\nu$; Y-axis is for the values of estimated regimes. Red dashed line is for the values in terms of the primary outcome of interest. Blue dashed line is for the values in terms of the secondary outcome of interest.
+\end{figure}
+\begin{table}[!htbp]
+	\caption {Simulation Result for Setting 9}
+	\centering
+	{\tt
+		\input{./Chapter-1/figs/result_9.tex}
+	}
+	\justify
+	Here, $\nu$ denotes the values of the constraint; $\wh{V}_1(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of primary outcome of interest; $std(\wh{V}_1)$ denotes the standard deviation of the estimated regime values in terms of primary outcome of interest; $\wh{V}_2(\wh{\bs{\theta}}_{\nu})$ denotes the values of estimated regimes in terms of secondary outcome of interest; $std(\wh{V}_2)$ denotes the standard deviation of the estimated regime values in terms of secondary outcome of interest; $\wh{\theta}_{\nu,1}$ and $\wh{\theta}_{\nu,2}$ denote the estimated index parameters of the regimes; $std(\wh{\theta}_{\nu,1})$ and $std(\wh{\theta}_{\nu,2})$ denote the standard deviations of those estimated index parameters.	
+\end{table} 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{./Chapter-1/figs/efficient_plot9.png}
+	\caption{Efficient frontier for estimated constrained optimal regimes for Setting 9.}
+	\label{fig:9}
+	\justify
+X-axis is for the values for the constraints $\nu$; Y-axis is for the values of estimated regimes. Red dashed line is for the values in terms of the primary outcome of interest. Blue dashed line is for the values in terms of the secondary outcome of interest.
+\end{figure}
+%	{\centering
+%		\begin{minipage}{0.45\textwidth}
+%			\centering
+%			%%%\includegraphics[width=.9\linewidth]{lb9.pdf}
+%			\captionof{figure}{Setting 9 by log barrier method}
+%		\end{minipage}
+%		\begin{minipage}{0.45\textwidth}
+%			\centering
+%			%%%\includegraphics[width=.9\linewidth]{ex9.pdf}
+%			\captionof{figure}{Setting 9 by exact penalty method}
+%		\end{minipage}
+%	}\\
+%	

@@ -1,0 +1,16 @@
+\chapter{Supplement materials for Chapter 5}
+\section{Least-squares policy evaluation (LSQ) algorithm}
+\begin{algorithm}[H]
+	\caption{LSQ}
+	$A \leftarrow 0$ \\
+	$b \leftarrow 0$ \\
+	for each $(s,a, s^{\prime}, r)$
+	
+	\hspace{25pt} $A \leftarrow A + \phi(s,a)\lt(\phi(s,a) - \gamma \phi(s',\pi(s')\rt)^\intercal $
+	
+	\hspace{25pt} $b \leftarrow  b + \phi(s,a)r$
+	
+	$w	\leftarrow A^{-1}b$
+	
+	return $w$
+\end{algorithm}
